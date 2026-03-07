@@ -476,8 +476,9 @@
         <div class="pulse-dot"></div>
         <div class="email-capture" id="email-capture">
             <p class="cta-text">Want to get in on the action?</p>
-            <form id="email-form" onsubmit="submitEmail(event)">
-                <input type="email" id="email-input" placeholder="your@email.com" required />
+            <form id="email-form" action="https://formspree.io/f/dupreeharkness@gmail.com" method="POST" onsubmit="submitEmail(event)">
+                <input type="email" name="email" id="email-input" placeholder="your@email.com" required />
+                <input type="hidden" name="_subject" value="🚀 New Muse Early Access Signup!" />
                 <button type="submit">I'M IN</button>
             </form>
             <p class="humans-only">HUMANS ONLY 🤖🚫</p>
@@ -599,19 +600,25 @@
         // Email capture
         function submitEmail(e) {
             e.preventDefault();
-            const email = document.getElementById('email-input').value;
             const form = document.getElementById('email-form');
             const thanks = document.getElementById('email-thanks');
+            const data = new FormData(form);
             
-            // Send via mailto for now (upgrade to API later)
-            const link = document.createElement('a');
-            link.href = 'mailto:dupreeharkness@gmail.com?subject=Muse%20Early%20Access&body=Sign%20me%20up!%20My%20email:%20' + encodeURIComponent(email);
-            link.click();
-            
-            form.style.display = 'none';
-            document.querySelector('.cta-text').style.display = 'none';
-            document.querySelector('.humans-only').style.display = 'none';
-            thanks.style.display = 'block';
+            fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(r => {
+                form.style.display = 'none';
+                document.querySelector('.cta-text').style.display = 'none';
+                document.querySelector('.humans-only').style.display = 'none';
+                thanks.style.display = 'block';
+            }).catch(() => {
+                form.style.display = 'none';
+                document.querySelector('.cta-text').style.display = 'none';
+                document.querySelector('.humans-only').style.display = 'none';
+                thanks.style.display = 'block';
+            });
         }
 
         setTimeout(() => createShootingStar(), 3000);
