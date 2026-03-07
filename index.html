@@ -289,6 +289,81 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
+        .email-capture {
+            margin-top: 28px;
+            text-align: center;
+        }
+
+        .email-capture .cta-text {
+            font-size: 1rem;
+            font-weight: 400;
+            color: rgba(200, 190, 230, 0.9);
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .email-capture form {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .email-capture input[type="email"] {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(147, 130, 220, 0.4);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 0.95rem;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            width: 240px;
+            transition: border-color 0.3s;
+        }
+
+        .email-capture input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .email-capture input[type="email"]:focus {
+            border-color: rgba(147, 130, 220, 0.8);
+            box-shadow: 0 0 15px rgba(147, 130, 220, 0.2);
+        }
+
+        .email-capture button {
+            background: linear-gradient(135deg, #9382dc, #7a6bc4);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .email-capture button:hover {
+            background: linear-gradient(135deg, #a494e8, #8b7ad0);
+            box-shadow: 0 0 20px rgba(147, 130, 220, 0.4);
+        }
+
+        .email-capture .humans-only {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.15em;
+            margin-top: 10px;
+        }
+
+        .email-capture .email-thanks {
+            font-size: 1rem;
+            color: rgba(147, 130, 220, 0.9);
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+        }
+
         @media (max-width: 768px) {
             .universe { width: 360px; height: 360px; }
             .center h1 { font-size: 2.8rem; }
@@ -399,6 +474,15 @@
         <h2>COMING SOON</h2>
         <p>Please Stand By</p>
         <div class="pulse-dot"></div>
+        <div class="email-capture" id="email-capture">
+            <p class="cta-text">Want to get in on the action?</p>
+            <form id="email-form" onsubmit="submitEmail(event)">
+                <input type="email" id="email-input" placeholder="your@email.com" required />
+                <button type="submit">I'M IN</button>
+            </form>
+            <p class="humans-only">HUMANS ONLY 🤖🚫</p>
+            <p class="email-thanks" id="email-thanks" style="display:none;">You're on the list. Stay tuned. ✨</p>
+        </div>
         <div class="subtext">heymuse.ai</div>
     </div>
 
@@ -511,6 +595,24 @@
             }, Math.random() * 30000 + 15000);
         }
         scheduleNova();
+
+        // Email capture
+        function submitEmail(e) {
+            e.preventDefault();
+            const email = document.getElementById('email-input').value;
+            const form = document.getElementById('email-form');
+            const thanks = document.getElementById('email-thanks');
+            
+            // Send via mailto for now (upgrade to API later)
+            const link = document.createElement('a');
+            link.href = 'mailto:dupreeharkness@gmail.com?subject=Muse%20Early%20Access&body=Sign%20me%20up!%20My%20email:%20' + encodeURIComponent(email);
+            link.click();
+            
+            form.style.display = 'none';
+            document.querySelector('.cta-text').style.display = 'none';
+            document.querySelector('.humans-only').style.display = 'none';
+            thanks.style.display = 'block';
+        }
 
         setTimeout(() => createShootingStar(), 3000);
         setTimeout(() => createSupernova(), 5000);
