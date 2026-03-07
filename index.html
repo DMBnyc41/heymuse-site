@@ -476,9 +476,8 @@
         <div class="pulse-dot"></div>
         <div class="email-capture" id="email-capture">
             <p class="cta-text">Want to get in on the action?</p>
-            <form id="email-form" action="https://formspree.io/f/dupreeharkness@gmail.com" method="POST" onsubmit="submitEmail(event)">
+            <form id="email-form" onsubmit="submitEmail(event)">
                 <input type="email" name="email" id="email-input" placeholder="your@email.com" required />
-                <input type="hidden" name="_subject" value="Unknown User - Web Inquiry" />
                 <button type="submit">I'M IN</button>
             </form>
             <p class="humans-only">HUMANS ONLY 🤖🚫</p>
@@ -597,18 +596,18 @@
         }
         scheduleNova();
 
-        // Email capture
+        // Email capture → Google Sheet
         function submitEmail(e) {
             e.preventDefault();
+            const email = document.getElementById('email-input').value;
             const form = document.getElementById('email-form');
             const thanks = document.getElementById('email-thanks');
-            const data = new FormData(form);
             
-            fetch(form.action, {
+            fetch('https://script.google.com/a/macros/heymuse.ai/s/AKfycbyiqnW8hQJCKVjDOxbGc150Cf8LgZmQ5Bo7AV02Y2aVY-0NjOcJX-fF_mDYW5axpLSj/exec', {
                 method: 'POST',
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(r => {
+                body: JSON.stringify({ email: email }),
+                headers: { 'Content-Type': 'text/plain' }
+            }).then(() => {
                 form.style.display = 'none';
                 document.querySelector('.cta-text').style.display = 'none';
                 document.querySelector('.humans-only').style.display = 'none';
