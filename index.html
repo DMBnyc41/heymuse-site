@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muse — Coming Soon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.8s ease;
+        }
+
+        body.illuminated {
+            background: #12121f;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: var(--max-opacity); }
+        }
+
+        .universe {
+            position: relative;
+            width: 700px;
+            height: 700px;
+            z-index: 1;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            cursor: default;
+        }
+
+        .center h1 {
+            font-size: 5rem;
+            font-weight: 200;
+            letter-spacing: 0.4em;
+            margin-right: -0.4em;
+            color: #e8e8f0;
+            text-shadow: 0 0 40px rgba(147, 130, 220, 0.3);
+            transition: all 0.8s ease;
+        }
+
+        body.illuminated .center h1 {
+            text-shadow: 0 0 80px rgba(147, 130, 220, 0.6), 0 0 120px rgba(147, 130, 220, 0.3);
+            color: #fff;
+        }
+
+        .center .tagline {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: rgba(200, 190, 230, 0.5);
+            margin-top: 0.5rem;
+            font-style: italic;
+            transition: all 0.8s ease;
+        }
+
+        body.illuminated .center .tagline {
+            color: rgba(200, 190, 230, 0.85);
+        }
+
+        .glow-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px; height: 220px;
+            border-radius: 50%;
+            border: 1px solid rgba(147, 130, 220, 0.1);
+            box-shadow: 0 0 30px rgba(147, 130, 220, 0.05);
+            transition: all 0.8s ease;
+            z-index: 5;
+        }
+
+        body.illuminated .glow-ring {
+            border-color: rgba(147, 130, 220, 0.25);
+            box-shadow: 0 0 60px rgba(147, 130, 220, 0.15), inset 0 0 30px rgba(147, 130, 220, 0.05);
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%; left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: border-color 0.8s ease;
+        }
+
+        body.illuminated .orbit {
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        .orbit-1 { width: 420px; height: 420px; }
+        .orbit-2 { width: 580px; height: 580px; }
+        .orbit-3 { width: 700px; height: 700px; }
+
+        .planet {
+            position: absolute;
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20, 20, 35, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.5s ease;
+            z-index: 10;
+        }
+
+        .planet:hover {
+            transform: scale(1.2);
+            border-color: rgba(147, 130, 220, 0.5);
+            box-shadow: 0 0 25px rgba(147, 130, 220, 0.3);
+        }
+
+        .planet .icon {
+            font-size: 1.6rem;
+            margin-bottom: 2px;
+        }
+
+        .planet .label {
+            font-size: 0.5rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            line-height: 1.1;
+            max-width: 64px;
+        }
+
+        body.illuminated .planet {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(25, 25, 45, 0.9);
+        }
+
+        .orbit-planets {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate var(--speed) linear infinite;
+        }
+
+        .orbit-planets-1 { width: 420px; height: 420px; --speed: 120s; }
+        .orbit-planets-2 { width: 580px; height: 580px; --speed: 180s; }
+        .orbit-planets-3 { width: 700px; height: 700px; --speed: 240s; }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .orbit-planets-1 .planet { animation: counter-rotate 120s linear infinite; }
+        .orbit-planets-2 .planet { animation: counter-rotate 180s linear infinite; }
+        .orbit-planets-3 .planet { animation: counter-rotate 240s linear infinite; }
+
+        @keyframes counter-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .pos-0 { top: -36px; left: 50%; margin-left: -36px; }
+        .pos-1 { top: 50%; right: -36px; margin-top: -36px; }
+        .pos-2 { bottom: -36px; left: 50%; margin-left: -36px; }
+        .pos-3 { top: 50%; left: -36px; margin-top: -36px; }
+        .pos-4 { top: 7%; right: 7%; }
+        .pos-5 { bottom: 7%; right: 7%; }
+        .pos-6 { bottom: 7%; left: 7%; }
+        .pos-7 { top: 7%; left: 7%; }
+
+        .credit {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 0.1em;
+            z-index: 100;
+        }
+
+        /* Coming Soon Modal */
+        .cs-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(16px);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .cs-overlay.active {
+            display: flex;
+        }
+
+        .cs-overlay h2 {
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            margin-right: -0.3em;
+            background: linear-gradient(135deg, #9382dc, #b8a9f0, #9382dc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .cs-overlay p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(200, 190, 230, 0.7);
+            letter-spacing: 0.1em;
+        }
+
+        .cs-overlay .subtext {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 24px;
+            letter-spacing: 0.15em;
+        }
+
+        .cs-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .cs-close:hover {
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .cs-overlay .pulse-dot {
+            display: inline-block;
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #9382dc;
+            margin-top: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .universe { width: 360px; height: 360px; }
+            .center h1 { font-size: 2.8rem; }
+            .center .tagline { font-size: 0.75rem; }
+            .orbit-1 { width: 220px; height: 220px; }
+            .orbit-2 { width: 300px; height: 300px; }
+            .orbit-3 { width: 360px; height: 360px; }
+            .orbit-planets-1 { width: 220px; height: 220px; }
+            .orbit-planets-2 { width: 300px; height: 300px; }
+            .orbit-planets-3 { width: 360px; height: 360px; }
+            .glow-ring { width: 140px; height: 140px; }
+            .planet { width: 48px; height: 48px; }
+            .planet .icon { font-size: 1.1rem; }
+            .planet .label { font-size: 0.35rem; max-width: 44px; }
+            .pos-0 { top: -24px; margin-left: -24px; }
+            .pos-1 { right: -24px; margin-top: -24px; }
+            .pos-2 { bottom: -24px; margin-left: -24px; }
+            .pos-3 { left: -24px; margin-top: -24px; }
+            .cs-overlay h2 { font-size: 1.6rem; }
+            .cs-overlay p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="universe">
+        <div class="orbit orbit-1"></div>
+        <div class="orbit orbit-2"></div>
+        <div class="orbit orbit-3"></div>
+
+        <div class="glow-ring"></div>
+
+        <div class="center" id="center">
+            <h1>MUSE</h1>
+            <div class="tagline">Inspiration, move me brightly</div>
+        </div>
+
+        <!-- Inner orbit -->
+        <div class="orbit-planets orbit-planets-1">
+            <div class="planet cs-trigger pos-0">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-1">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-2">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-3">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+        </div>
+
+        <!-- Middle orbit -->
+        <div class="orbit-planets orbit-planets-2">
+            <div class="planet cs-trigger pos-0">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-1">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-2">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-3">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+        </div>
+
+        <!-- Outer orbit -->
+        <div class="orbit-planets orbit-planets-3">
+            <div class="planet cs-trigger pos-0">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-1">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-2">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-3">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+            <div class="planet cs-trigger pos-4">
+                <span class="icon">❓</span>
+                <span class="label">???</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coming Soon Overlay -->
+    <div class="cs-overlay" id="cs-overlay">
+        <button class="cs-close" onclick="document.getElementById('cs-overlay').classList.remove('active')">✕</button>
+        <h2>COMING SOON</h2>
+        <p>Please Stand By</p>
+        <div class="pulse-dot"></div>
+        <div class="subtext">heymuse.ai</div>
+    </div>
+
+    <div class="credit">© 2026 MyMuse Enterprises LLC</div>
+
+    <script>
+        // Stars
+        const starsEl = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2 + 0.5;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 4 + 2) + 's');
+            star.style.setProperty('--max-opacity', (Math.random() * 0.5 + 0.2));
+            star.style.animationDelay = Math.random() * 4 + 's';
+            starsEl.appendChild(star);
+        }
+
+        // Illumination
+        const center = document.getElementById('center');
+        center.addEventListener('mouseenter', () => document.body.classList.add('illuminated'));
+        center.addEventListener('mouseleave', () => document.body.classList.remove('illuminated'));
+        center.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            document.body.classList.toggle('illuminated');
+        });
+
+        // All planets trigger Coming Soon
+        document.querySelectorAll('.cs-trigger').forEach(el => {
+            el.addEventListener('click', () => {
+                document.getElementById('cs-overlay').classList.add('active');
+            });
+        });
+
+        // Click overlay background to close
+        document.getElementById('cs-overlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('cs-overlay')) {
+                document.getElementById('cs-overlay').classList.remove('active');
+            }
+        });
+
+        // Shooting stars
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.style.cssText = `
+                position: fixed;
+                top: ${Math.random() * 40}%;
+                left: ${Math.random() * 100}%;
+                width: ${Math.random() * 80 + 40}px;
+                height: 1px;
+                background: linear-gradient(90deg, rgba(255,255,255,${Math.random() * 0.6 + 0.3}), transparent);
+                transform: rotate(${Math.random() * 30 + 15}deg);
+                pointer-events: none;
+                z-index: 0;
+                animation: shootStar ${Math.random() * 0.8 + 0.4}s linear forwards;
+            `;
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 1500);
+        }
+
+        function createSupernova() {
+            const nova = document.createElement('div');
+            const size = Math.random() * 4 + 2;
+            const intensity = Math.random() * 0.7 + 0.3;
+            nova.style.cssText = `
+                position: fixed;
+                top: ${Math.random() * 100}%;
+                left: ${Math.random() * 100}%;
+                width: ${size}px;
+                height: ${size}px;
+                border-radius: 50%;
+                background: rgba(${180 + Math.random()*75}, ${150 + Math.random()*80}, ${220 + Math.random()*35}, ${intensity});
+                box-shadow: 0 0 ${size * 3}px rgba(180, 150, 255, ${intensity * 0.5}), 0 0 ${size * 6}px rgba(147, 130, 220, ${intensity * 0.3});
+                pointer-events: none;
+                z-index: 0;
+                animation: supernova ${Math.random() * 1.5 + 0.8}s ease-out forwards;
+            `;
+            document.body.appendChild(nova);
+            setTimeout(() => nova.remove(), 3000);
+        }
+
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            @keyframes shootStar {
+                0% { opacity: 1; transform: rotate(var(--angle, 25deg)) translateX(0); }
+                100% { opacity: 0; transform: rotate(var(--angle, 25deg)) translateX(300px); }
+            }
+            @keyframes supernova {
+                0% { transform: scale(0); opacity: 1; }
+                50% { transform: scale(2.5); opacity: 0.8; }
+                100% { transform: scale(4); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        setInterval(() => createShootingStar(), 240000);
+        setInterval(() => {
+            createShootingStar();
+            setTimeout(() => createShootingStar(), Math.random() * 2000 + 500);
+        }, 480000);
+
+        function scheduleNova() {
+            setTimeout(() => {
+                createSupernova();
+                scheduleNova();
+            }, Math.random() * 30000 + 15000);
+        }
+        scheduleNova();
+
+        setTimeout(() => createShootingStar(), 3000);
+        setTimeout(() => createSupernova(), 5000);
+        setTimeout(() => createSupernova(), 8000);
+        setTimeout(() => createShootingStar(), 12000);
+    </script>
+</body>
+</html>
