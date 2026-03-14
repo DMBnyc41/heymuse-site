@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muse — Coming Soon</title>
+    <title>Muse — Get Started</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
 
@@ -406,64 +406,64 @@
         <!-- Inner orbit -->
         <div class="orbit-planets orbit-planets-1">
             <div class="planet cs-trigger pos-0">
-                <span class="icon">P</span>
-                <span class="label">P</span>
+                <span class="icon">🏥</span>
+                <span class="label">Health</span>
             </div>
             <div class="planet cs-trigger pos-1">
-                <span class="icon">L</span>
-                <span class="label">L</span>
+                <span class="icon">💰</span>
+                <span class="label">Finance</span>
             </div>
             <div class="planet cs-trigger pos-2">
-                <span class="icon">E</span>
-                <span class="label">E</span>
+                <span class="icon">🎮</span>
+                <span class="label">Gaming</span>
             </div>
             <div class="planet cs-trigger pos-3">
-                <span class="icon">A</span>
-                <span class="label">A</span>
+                <span class="icon">🧠</span>
+                <span class="label">Memory</span>
             </div>
         </div>
 
         <!-- Middle orbit -->
         <div class="orbit-planets orbit-planets-2">
             <div class="planet cs-trigger pos-0">
-                <span class="icon">S</span>
-                <span class="label">S</span>
+                <span class="icon">🏠</span>
+                <span class="label">Home</span>
             </div>
             <div class="planet cs-trigger pos-1">
-                <span class="icon">E</span>
-                <span class="label">E</span>
+                <span class="icon">🔒</span>
+                <span class="label">Security</span>
             </div>
             <div class="planet cs-trigger pos-2">
-                <span class="icon">S</span>
-                <span class="label">S</span>
+                <span class="icon">🗣️</span>
+                <span class="label">Voice</span>
             </div>
             <div class="planet cs-trigger pos-3">
-                <span class="icon">T</span>
-                <span class="label">T</span>
+                <span class="icon">📧</span>
+                <span class="label">Email</span>
             </div>
         </div>
 
         <!-- Outer orbit -->
         <div class="orbit-planets orbit-planets-3">
             <div class="planet cs-trigger pos-0">
-                <span class="icon">A</span>
-                <span class="label">A</span>
+                <span class="icon">🏢</span>
+                <span class="label">Business</span>
             </div>
             <div class="planet cs-trigger pos-1">
-                <span class="icon">N</span>
-                <span class="label">N</span>
+                <span class="icon">🎓</span>
+                <span class="label">Education</span>
             </div>
             <div class="planet cs-trigger pos-2">
-                <span class="icon">D</span>
-                <span class="label">D</span>
+                <span class="icon">🌐</span>
+                <span class="label">M2M</span>
             </div>
             <div class="planet cs-trigger pos-3">
-                <span class="icon">B</span>
-                <span class="label">B</span>
+                <span class="icon">😊</span>
+                <span class="label">Face</span>
             </div>
             <div class="planet cs-trigger pos-4">
-                <span class="icon">Y</span>
-                <span class="label">Y</span>
+                <span class="icon">🎵</span>
+                <span class="label">Music</span>
             </div>
         </div>
     </div>
@@ -471,22 +471,28 @@
     <!-- Coming Soon Overlay -->
     <div class="cs-overlay" id="cs-overlay">
         <button class="cs-close" onclick="document.getElementById('cs-overlay').classList.remove('active')">✕</button>
-        <h2>COMING SOON</h2>
-        <p>Please Stand By</p>
+        <h2>JOIN THE WAITLIST</h2>
+        <p>Your Muse is almost ready</p>
         <div class="pulse-dot"></div>
         <div class="email-capture" id="email-capture">
-            <p class="cta-text">Want to get in on the action?</p>
+            <p class="cta-text">Be the first to meet yours.</p>
             <form id="email-form" onsubmit="submitEmail(event)">
-                <input type="email" name="email" id="email-input" placeholder="your@email.com" required />
+                <input type="email" id="email-input" placeholder="your@email.com" required />
                 <button type="submit">I'M IN</button>
             </form>
             <p class="humans-only">HUMANS ONLY 🤖🚫</p>
-            <p class="email-thanks" id="email-thanks" style="display:none;">You're on the list. Stay tuned. ✨</p>
+            <p class="email-thanks" id="email-thanks" style="display:none;">You're on the list. We'll be in touch. ✨</p>
         </div>
         <div class="subtext">heymuse.ai</div>
     </div>
 
-    <div class="credit">© 2026 MyMuse Enterprises LLC</div>
+    <div class="credit" style="text-align:center; padding: 20px; font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 2;">
+        <p style="margin-bottom: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.6);">Muse — Your AI Companion. A personal AI that remembers you, grows with you, and works for you.</p>
+        <p style="margin-bottom: 8px;">MyMuse Enterprises LLC · Wilmington, NC · <a href="mailto:hello@heymuse.ai" style="color: rgba(147,130,220,0.7); text-decoration: none;">hello@heymuse.ai</a></p>
+        <p style="margin-bottom: 8px;">Plans starting at $299/month · Cancel anytime · Your data, your rules</p>
+        <p><a href="MUSE-TOS-DRAFT.html" style="color: rgba(255,255,255,0.4); text-decoration: none;">Terms of Service</a> · <a href="privacy.html" style="color: rgba(255,255,255,0.4); text-decoration: none;">Privacy Policy</a> · <a href="mailto:hello@heymuse.ai" style="color: rgba(255,255,255,0.4); text-decoration: none;">Contact Us</a></p>
+        <p style="margin-top: 8px;">© 2026 MyMuse Enterprises LLC. All rights reserved.</p>
+    </div>
 
     <script>
         // Stars
@@ -514,11 +520,16 @@
             document.body.classList.toggle('illuminated');
         });
 
-        // All planets trigger Coming Soon
+        // All planets trigger waitlist signup
         document.querySelectorAll('.cs-trigger').forEach(el => {
             el.addEventListener('click', () => {
                 document.getElementById('cs-overlay').classList.add('active');
             });
+        });
+
+        // Clicking MUSE title also triggers waitlist
+        center.addEventListener('click', () => {
+            document.getElementById('cs-overlay').classList.add('active');
         });
 
         // Click overlay background to close
@@ -596,28 +607,22 @@
         }
         scheduleNova();
 
-        // Email capture → Google Sheet
+        // Email capture
         function submitEmail(e) {
             e.preventDefault();
             const email = document.getElementById('email-input').value;
             const form = document.getElementById('email-form');
             const thanks = document.getElementById('email-thanks');
             
-            fetch('https://script.google.com/a/macros/heymuse.ai/s/AKfycbyiqnW8hQJCKVjDOxbGc150Cf8LgZmQ5Bo7AV02Y2aVY-0NjOcJX-fF_mDYW5axpLSj/exec', {
-                method: 'POST',
-                body: JSON.stringify({ email: email }),
-                headers: { 'Content-Type': 'text/plain' }
-            }).then(() => {
-                form.style.display = 'none';
-                document.querySelector('.cta-text').style.display = 'none';
-                document.querySelector('.humans-only').style.display = 'none';
-                thanks.style.display = 'block';
-            }).catch(() => {
-                form.style.display = 'none';
-                document.querySelector('.cta-text').style.display = 'none';
-                document.querySelector('.humans-only').style.display = 'none';
-                thanks.style.display = 'block';
-            });
+            // Send via mailto for now (upgrade to API later)
+            const link = document.createElement('a');
+            link.href = 'mailto:dupreeharkness@gmail.com?subject=Muse%20Early%20Access&body=Sign%20me%20up!%20My%20email:%20' + encodeURIComponent(email);
+            link.click();
+            
+            form.style.display = 'none';
+            document.querySelector('.cta-text').style.display = 'none';
+            document.querySelector('.humans-only').style.display = 'none';
+            thanks.style.display = 'block';
         }
 
         setTimeout(() => createShootingStar(), 3000);
