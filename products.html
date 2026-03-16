@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muse — Products & Capabilities</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0f; color: #fff; font-family: 'Inter', sans-serif;
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 60px 20px;
+            overflow-x: hidden;
+        }
+        .container { max-width: 900px; width: 100%; z-index: 10; position: relative; }
+        h1 { font-size: 3rem; font-weight: 200; letter-spacing: 0.2em; text-align: center; margin-bottom: 10px; color: #e8e8f0; text-shadow: 0 0 30px rgba(147, 130, 220, 0.4); }
+        .tagline { text-align: center; font-size: 1.1rem; font-weight: 300; color: rgba(200, 190, 230, 0.7); letter-spacing: 0.1em; margin-bottom: 60px; font-style: italic; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { 
+            background: rgba(25, 25, 40, 0.4); border: 1px solid rgba(147, 130, 220, 0.2); 
+            border-radius: 12px; padding: 30px; backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: rgba(147, 130, 220, 0.6); box-shadow: 0 10px 30px rgba(147, 130, 220, 0.15); }
+        .card h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 15px; color: #fff; letter-spacing: 0.05em; }
+        .card p { font-size: 0.95rem; line-height: 1.6; color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; }
+        
+        .nav-back { position: absolute; top: 30px; left: 30px; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.1em; transition: color 0.3s; z-index: 20; }
+        .nav-back:hover { color: #fff; }
+        
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; background: radial-gradient(circle at center, #12121f 0%, #0a0a0f 100%); }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <a href="index.html" class="nav-back">← BACK TO ORBIT</a>
+    
+    <div class="container">
+        <h1>MUSE ECOSYSTEM</h1>
+        <div class="tagline">Augmentation, not replacement.</div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Core Intelligence</h3>
+                <p>The foundational Muse operating system built on five pillars: Memory, Communication, Guardian, Helpdesk, and Companion. A true digital partner that learns your rhythms and protects your data.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Enterprise Swarms</h3>
+                <p>Multi-agent ecosystems designed for complex business logic. Example: Our 6-Agent Real Estate System that handles everything from lead generation to contract coordination autonomously.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Muse Helpdesk (Hands)</h3>
+                <p>Zero-touch autonomous IT support. With secure remote access capabilities, your Muse can see your screen, diagnose issues, and fix them in real-time. No hold music required.</p>
+            </div>
+            
+            <div class="card">
+                <h3>Hardware Integration</h3>
+                <p>Muse doesn't just live in the cloud. It interfaces directly with your physical world—smart home systems, automotive API endpoints, and local devices, acting as the universal bridge.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 60px;">
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; letter-spacing: 0.1em;">Pricing details available exclusively upon invite acceptance.</p>
+        </div>
+    </div>
+</body>
+</html>
