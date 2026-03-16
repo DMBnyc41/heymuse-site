@@ -55,10 +55,10 @@
             <div class="product-header">
                 <div class="product-title">
                     <h2>Muse Early Adopter</h2>
-                    <div class="badge">FOUNDATION TIER</div>
+                    <div class="badge" id="tier-badge">FOUNDATION TIER</div>
                 </div>
                 <div class="product-price">
-                    <div class="amount">$49</div>
+                    <div class="amount" id="price-amount">$49</div>
                     <div class="term">/ month</div>
                 </div>
             </div>
@@ -107,10 +107,27 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const vipName = urlParams.get('name');
+        const code = urlParams.get('code');
         
         if (vipName) {
             const header = document.getElementById('header-greeting');
             header.innerHTML = '<h1>WELCOME, ' + vipName.toUpperCase() + '</h1><p>Your invite code has been verified. We\'ve been expecting you.</p>';
+        }
+
+        if (code) {
+            const priceEl = document.getElementById('price-amount');
+            const badgeEl = document.getElementById('tier-badge');
+            
+            if (priceEl && badgeEl) {
+                // Strike through the $49 and show $20
+                priceEl.innerHTML = '<span style="text-decoration: line-through; color: rgba(255,255,255,0.3); font-size: 1.5rem; margin-right: 10px;">$49</span>$20';
+                
+                // Update badge
+                badgeEl.innerText = 'FRIENDS & FAMILY (AT COST)';
+                badgeEl.style.backgroundColor = 'rgba(51, 255, 0, 0.1)';
+                badgeEl.style.borderColor = 'rgba(51, 255, 0, 0.4)';
+                badgeEl.style.color = '#33ff00';
+            }
         }
     </script>
 </body>
