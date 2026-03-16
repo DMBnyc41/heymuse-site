@@ -649,26 +649,53 @@
             };
             
             if (generalCodes.includes(code) || vipCodes[code]) {
+                // Hide the code form
                 document.getElementById('invite-form').style.display = 'none';
                 document.getElementById('toggle-text').style.display = 'none';
                 document.getElementById('cta-text').style.display = 'none';
-                
+
+                // Show the name prompt
                 const successMsg = document.getElementById('code-success');
                 successMsg.style.display = 'block';
                 successMsg.style.color = '#33ff00';
-                
-                let redirectUrl = 'purchase.html?code=' + encodeURIComponent(code);
-                
-                if (vipCodes[code]) {
-                    successMsg.innerText = 'Welcome ' + vipCodes[code] + '! Loading private access...';
-                    redirectUrl += '&name=' + encodeURIComponent(vipCodes[code]);
-                } else {
-                    successMsg.innerText = 'Code accepted. Loading private access...';
-                }
-                
-                setTimeout(() => {
-                    window.location.href = redirectUrl;
-                }, 2500);
+                successMsg.innerText = 'Code accepted.';
+
+                // Inject name form right after
+                const nameForm = document.createElement('form');
+                nameForm.id = 'name-form';
+                nameForm.style.cssText = 'display:flex; flex-direction:column; align-items:center; gap:12px; margin-top:16px;';
+                nameForm.innerHTML = `
+                    <p style="color:rgba(200,190,230,0.85); font-size:0.95rem; letter-spacing:0.05em;">What's your name?</p>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="name-input" placeholder="First name" autofocus required
+                            style="background:rgba(255,255,255,0.08); border:1px solid rgba(147,130,220,0.4); border-radius:8px; padding:10px 16px; font-size:0.95rem; color:#fff; font-family:'Inter',sans-serif; outline:none; width:180px;" />
+                        <button type="submit"
+                            style="background:linear-gradient(135deg,#9382dc,#7a6bc4); border:none; border-radius:8px; padding:10px 20px; color:#fff; font-family:'Inter',sans-serif; font-size:0.9rem; font-weight:600; letter-spacing:0.08em; cursor:pointer;">
+                            →
+                        </button>
+                    </div>
+                `;
+                successMsg.after(nameForm);
+
+                nameForm.addEventListener('submit', function(ev) {
+                    ev.preventDefault();
+                    const nameInput = document.getElementById('name-input');
+                    const enteredName = nameInput.value.trim();
+                    if (!enteredName) return;
+
+                    // Use VIP name if available, otherwise use what they typed
+                    const displayName = vipCodes[code] || enteredName;
+
+                    nameForm.style.display = 'none';
+                    successMsg.style.color = '#33ff00';
+                    successMsg.innerText = 'Welcome, ' + displayName + '. We\'ve been expecting you.';
+
+                    const redirectUrl = 'purchase.html?code=' + encodeURIComponent(code) + '&name=' + encodeURIComponent(displayName);
+                    setTimeout(() => {
+                        window.location.href = redirectUrl;
+                    }, 2000);
+                });
+
             } else {
                 codeInput.style.borderColor = '#ff3333';
                 codeInput.value = '';
