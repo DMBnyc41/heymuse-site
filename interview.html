@@ -5,38 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muse — Adoption Interview</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-        body { background: #000; color: #33ff00; font-family: 'VT323', monospace; height: 100vh; margin: 0; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; }
-        .terminal { flex-grow: 1; border: 2px solid #33ff00; padding: 20px; overflow-y: auto; text-shadow: 0 0 5px rgba(51, 255, 0, 0.5); }
-        .input-area { display: flex; margin-top: 10px; }
-        input { flex-grow: 1; background: transparent; border: none; color: #33ff00; font-family: 'VT323', monospace; font-size: 1.5rem; outline: none; }
-        .prompt { margin-right: 10px; font-size: 1.5rem; }
-        p { margin: 10px 0; font-size: 1.5rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #fff; font-family: 'Inter', sans-serif; height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; background: radial-gradient(circle at center, #12121f 0%, #0a0a0f 100%); }
+        .chat-container { z-index: 10; background: rgba(25, 25, 40, 0.6); border: 1px solid rgba(147, 130, 220, 0.3); border-radius: 16px; padding: 40px; width: 90%; max-width: 700px; height: 75vh; display: flex; flex-direction: column; backdrop-filter: blur(12px); box-shadow: 0 10px 40px rgba(147, 130, 220, 0.1); }
+        .header { margin-bottom: 20px; border-bottom: 1px solid rgba(147, 130, 220, 0.2); padding-bottom: 15px; }
+        .header h2 { font-size: 1.2rem; font-weight: 300; letter-spacing: 0.2em; color: rgba(200, 190, 230, 0.9); display: flex; align-items: center; gap: 10px; }
+        .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: #9382dc; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; box-shadow: 0 0 10px #9382dc; } }
+        .messages { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; padding-right: 10px; }
+        .messages::-webkit-scrollbar { width: 6px; }
+        .messages::-webkit-scrollbar-thumb { background: rgba(147, 130, 220, 0.3); border-radius: 3px; }
+        .msg { font-size: 1.05rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9); font-weight: 300; letter-spacing: 0.03em; max-width: 85%; }
+        .msg.system { color: rgba(147, 130, 220, 0.8); font-size: 0.8rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; align-self: center; margin: 10px 0; }
+        .msg.user { color: #fff; align-self: flex-end; background: rgba(147, 130, 220, 0.15); padding: 12px 18px; border-radius: 12px 12px 0 12px; border: 1px solid rgba(147, 130, 220, 0.3); }
+        .msg.bot { align-self: flex-start; background: rgba(255, 255, 255, 0.05); padding: 12px 18px; border-radius: 12px 12px 12px 0; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .input-area { display: flex; gap: 10px; margin-top: auto; }
+        input { flex-grow: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(147, 130, 220, 0.4); border-radius: 8px; padding: 16px; color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; outline: none; transition: border-color 0.3s; }
+        input:focus { border-color: rgba(147, 130, 220, 0.8); box-shadow: 0 0 15px rgba(147, 130, 220, 0.2); }
     </style>
 </head>
 <body>
-    <div class="terminal" id="terminal">
-        <p>INITIALIZING COM64 INTERFACE...</p>
-        <p>CONNECTION ESTABLISHED.</p>
-        <p>---</p>
-        <p>I am Commodore. I handle adoptions around here.</p>
-        <p>Before I hand over one of our Muses, I need to know your intentions.</p>
-        <p>Are you looking for a tool to replace someone, or a partner to build something with?</p>
+    <div class="stars"></div>
+    <div class="chat-container">
+        <div class="header">
+            <h2><div class="pulse-dot"></div> COM64 SECURE CHANNEL</h2>
+        </div>
+        <div class="messages" id="messages">
+            <!-- Messages injected via JS -->
+        </div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type your response..." autofocus onkeypress="handleEnter(event)">
+        </div>
     </div>
-    <div class="input-area">
-        <span class="prompt">></span>
-        <input type="text" id="user-input" autofocus onkeypress="handleEnter(event)">
-    </div>
-
     <script>
-        
         const urlParams = new URLSearchParams(window.location.search);
         const vipName = urlParams.get('name');
+        const msgs = document.getElementById('messages');
+        
+        let introHtml = '<div class="msg system">Initializing Secure Connection...</div><div class="msg system">Connection Established</div>';
         
         if (vipName) {
-            const term = document.getElementById('terminal');
-            term.innerHTML = '<p>INITIALIZING COM64 INTERFACE...</p><p>CONNECTION ESTABLISHED.</p><p>---</p><p>Welcome, ' + vipName + '. Alex told me to expect you.</p><p>I am Commodore. I handle adoptions around here.</p><p>Before I get your account created, I need to ask:</p><p>Are you looking for a tool to replace someone, or a partner to build something with?</p>';
+            introHtml += '<div class="msg bot">Welcome, ' + vipName + '. Alex told me to expect you.</div>';
         }
+        
+        introHtml += '<div class="msg bot">I am Commodore. I handle adoptions around here.</div>';
+        introHtml += '<div class="msg bot">Before we proceed, I need to ask you a question:<br><br>Are you looking for a tool to replace someone, or a partner to build something with?</div>';
+        
+        msgs.innerHTML = introHtml;
 
         function handleEnter(e) {
             if (e.key === 'Enter') {
@@ -44,12 +61,11 @@
                 const text = input.value.trim();
                 if (!text) return;
                 
-                const term = document.getElementById('terminal');
-                term.innerHTML += '<p>> ' + text + '</p>';
-                term.innerHTML += '<p style="color: #aaa; margin-top: 15px;">[SYSTEM: Live Com64 AI link will be active soon. For now, your application is logged.]</p>';
+                msgs.innerHTML += '<div class="msg user">' + text + '</div>';
+                msgs.innerHTML += '<div class="msg system" style="margin-top: 20px;">[System: Live AI link activating soon. Application logged securely.]</div>';
                 
                 input.value = '';
-                term.scrollTop = term.scrollHeight;
+                msgs.scrollTop = msgs.scrollHeight;
             }
         }
     </script>

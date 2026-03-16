@@ -656,7 +656,7 @@
                 successMsg.style.display = 'block';
                 successMsg.style.color = '#33ff00';
                 
-                let redirectUrl = 'interview.html?code=' + encodeURIComponent(code);
+                let redirectUrl = (code === 'tommyostuni' ? 'interview-retro.html' : 'interview.html') + '?code=' + encodeURIComponent(code);
                 
                 if (vipCodes[code]) {
                     successMsg.innerText = 'Welcome ' + vipCodes[code] + '! Alex told me to expect you. Let me get your account created...';
