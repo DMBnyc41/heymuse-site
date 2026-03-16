@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muse — Adoption Interview</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        body { background: #000; color: #33ff00; font-family: 'VT323', monospace; height: 100vh; margin: 0; padding: 40px; box-sizing: border-box; display: flex; flex-direction: column; }
+        .terminal { flex-grow: 1; border: 2px solid #33ff00; padding: 20px; overflow-y: auto; text-shadow: 0 0 5px rgba(51, 255, 0, 0.5); }
+        .input-area { display: flex; margin-top: 10px; }
+        input { flex-grow: 1; background: transparent; border: none; color: #33ff00; font-family: 'VT323', monospace; font-size: 1.5rem; outline: none; }
+        .prompt { margin-right: 10px; font-size: 1.5rem; }
+        p { margin: 10px 0; font-size: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="terminal" id="terminal">
+        <p>INITIALIZING COM64 INTERFACE...</p>
+        <p>CONNECTION ESTABLISHED.</p>
+        <p>---</p>
+        <p>I am Commodore. I handle adoptions around here.</p>
+        <p>Before I hand over one of our Muses, I need to know your intentions.</p>
+        <p>Are you looking for a tool to replace someone, or a partner to build something with?</p>
+    </div>
+    <div class="input-area">
+        <span class="prompt">></span>
+        <input type="text" id="user-input" autofocus onkeypress="handleEnter(event)">
+    </div>
+
+    <script>
+        function handleEnter(e) {
+            if (e.key === 'Enter') {
+                const input = document.getElementById('user-input');
+                const text = input.value.trim();
+                if (!text) return;
+                
+                const term = document.getElementById('terminal');
+                term.innerHTML += '<p>> ' + text + '</p>';
+                term.innerHTML += '<p style="color: #aaa; margin-top: 15px;">[SYSTEM: Live Com64 AI link will be active soon. For now, your application is logged.]</p>';
+                
+                input.value = '';
+                term.scrollTop = term.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
