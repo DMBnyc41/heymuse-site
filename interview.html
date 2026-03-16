@@ -29,6 +29,15 @@
     </div>
 
     <script>
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const vipName = urlParams.get('name');
+        
+        if (vipName) {
+            const term = document.getElementById('terminal');
+            term.innerHTML = '<p>INITIALIZING COM64 INTERFACE...</p><p>CONNECTION ESTABLISHED.</p><p>---</p><p>Welcome, ' + vipName + '. Alex told me to expect you.</p><p>I am Commodore. I handle adoptions around here.</p><p>Before I get your account created, I need to ask:</p><p>Are you looking for a tool to replace someone, or a partner to build something with?</p>';
+        }
+
         function handleEnter(e) {
             if (e.key === 'Enter') {
                 const input = document.getElementById('user-input');
