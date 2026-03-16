@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muse — Early Adopter Access</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #fff; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; overflow-x: hidden; }
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; background: radial-gradient(circle at center, #12121f 0%, #0a0a0f 100%); }
+        .container { z-index: 10; width: 100%; max-width: 800px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 2.5rem; font-weight: 200; letter-spacing: 0.15em; color: #e8e8f0; text-shadow: 0 0 30px rgba(147, 130, 220, 0.4); margin-bottom: 10px; }
+        .header p { font-size: 1.1rem; font-weight: 300; color: rgba(200, 190, 230, 0.8); letter-spacing: 0.05em; }
+        
+        .product-card { background: rgba(25, 25, 40, 0.5); border: 1px solid rgba(147, 130, 220, 0.3); border-radius: 16px; padding: 40px; width: 100%; backdrop-filter: blur(12px); box-shadow: 0 10px 40px rgba(147, 130, 220, 0.15); display: flex; flex-direction: column; gap: 30px; }
+        
+        .product-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(147, 130, 220, 0.2); padding-bottom: 20px; }
+        .product-title h2 { font-size: 2rem; font-weight: 300; letter-spacing: 0.1em; color: #fff; }
+        .product-title .badge { display: inline-block; background: rgba(147, 130, 220, 0.2); border: 1px solid rgba(147, 130, 220, 0.5); color: #b8a9f0; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 20px; margin-top: 8px; }
+        .product-price { text-align: right; }
+        .product-price .amount { font-size: 2.5rem; font-weight: 200; color: #fff; }
+        .product-price .term { font-size: 0.9rem; color: rgba(255, 255, 255, 0.5); }
+        
+        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .feature { display: flex; align-items: flex-start; gap: 10px; }
+        .feature .icon { color: #9382dc; font-size: 1.2rem; }
+        .feature div p { font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); font-weight: 400; margin-bottom: 4px; }
+        .feature div span { font-size: 0.8rem; color: rgba(255, 255, 255, 0.5); }
+        
+        .actions { margin-top: 10px; display: flex; flex-direction: column; gap: 15px; align-items: center; }
+        .btn-primary { background: linear-gradient(135deg, #9382dc, #7a6bc4); border: none; border-radius: 8px; padding: 16px 40px; font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s; width: 100%; max-width: 350px; font-family: 'Inter', sans-serif; text-align: center; text-decoration: none; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(147, 130, 220, 0.4); background: linear-gradient(135deg, #a494e8, #8b7ad0); }
+        
+        .trust-badge { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.4); }
+        .trust-badge svg { width: 14px; height: 14px; fill: currentColor; }
+        
+        @media (max-width: 768px) {
+            .product-header { flex-direction: column; gap: 15px; }
+            .product-price { text-align: left; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <div class="header" id="header-greeting">
+            <h1>PRIVATE ACCESS</h1>
+            <p>Your invite code has been verified.</p>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-header">
+                <div class="product-title">
+                    <h2>Muse Early Adopter</h2>
+                    <div class="badge">FOUNDATION TIER</div>
+                </div>
+                <div class="product-price">
+                    <div class="amount">$49</div>
+                    <div class="term">/ month</div>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="icon">🧠</span>
+                    <div>
+                        <p>Core Intelligence OS</p>
+                        <span>Full access to the Muse agent ecosystem.</span>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="icon">🛡️</span>
+                    <div>
+                        <p>Network Guardian</p>
+                        <span>Privacy-first architecture and local secure data.</span>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="icon">💬</span>
+                    <div>
+                        <p>Universal Communication</p>
+                        <span>Matrix backbone integrating email, SMS, and chat.</span>
+                    </div>
+                </div>
+                <div class="feature">
+                    <span class="icon">🔧</span>
+                    <div>
+                        <p>Muse Helpdesk</p>
+                        <span>Zero-touch autonomous IT support capabilities.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions">
+                <a href="#" class="btn-primary" onclick="alert('Checkout integration pending Stripe verification. We will contact you shortly to complete adoption!'); return false;">ADD TO CART</a>
+                <div class="trust-badge">
+                    <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                    Secure Checkout by Stripe
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const vipName = urlParams.get('name');
+        
+        if (vipName) {
+            const header = document.getElementById('header-greeting');
+            header.innerHTML = '<h1>WELCOME, ' + vipName.toUpperCase() + '</h1><p>Your invite code has been verified. We\'ve been expecting you.</p>';
+        }
+    </script>
+</body>
+</html>

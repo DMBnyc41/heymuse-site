@@ -656,13 +656,13 @@
                 successMsg.style.display = 'block';
                 successMsg.style.color = '#33ff00';
                 
-                let redirectUrl = (code === 'tommyostuni' ? 'interview-retro.html' : 'interview.html') + '?code=' + encodeURIComponent(code);
+                let redirectUrl = 'purchase.html?code=' + encodeURIComponent(code);
                 
                 if (vipCodes[code]) {
-                    successMsg.innerText = 'Welcome ' + vipCodes[code] + '! Alex told me to expect you. Let me get your account created...';
+                    successMsg.innerText = 'Welcome ' + vipCodes[code] + '! Loading private access...';
                     redirectUrl += '&name=' + encodeURIComponent(vipCodes[code]);
                 } else {
-                    successMsg.innerText = 'Code accepted. Initializing Com64...';
+                    successMsg.innerText = 'Code accepted. Loading private access...';
                 }
                 
                 setTimeout(() => {
