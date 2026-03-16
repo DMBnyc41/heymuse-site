@@ -632,15 +632,33 @@
 
         function submitCode(e) {
             e.preventDefault();
-            const code = document.getElementById('invite-input').value;
-            document.getElementById('invite-form').style.display = 'none';
-            document.getElementById('toggle-text').style.display = 'none';
-            document.getElementById('cta-text').style.display = 'none';
-            document.getElementById('code-success').style.display = 'block';
+            const codeInput = document.getElementById('invite-input');
+            const code = codeInput.value.trim().toLowerCase();
             
-            setTimeout(() => {
-                window.location.href = 'interview.html?code=' + encodeURIComponent(code);
-            }, 1500);
+            const validCodes = ['jerrygarcia', 'terrapinstation', 'harkness', 'pcantone'];
+            
+            if (validCodes.includes(code)) {
+                document.getElementById('invite-form').style.display = 'none';
+                document.getElementById('toggle-text').style.display = 'none';
+                document.getElementById('cta-text').style.display = 'none';
+                
+                const successMsg = document.getElementById('code-success');
+                successMsg.style.display = 'block';
+                successMsg.style.color = '#33ff00';
+                successMsg.innerText = 'Code accepted. Initializing Com64...';
+                
+                setTimeout(() => {
+                    window.location.href = 'interview.html?code=' + encodeURIComponent(code);
+                }, 1500);
+            } else {
+                codeInput.style.borderColor = '#ff3333';
+                codeInput.value = '';
+                codeInput.placeholder = 'Invalid Code';
+                setTimeout(() => {
+                    codeInput.style.borderColor = 'rgba(147, 130, 220, 0.4)';
+                    codeInput.placeholder = 'Invite Code';
+                }, 2000);
+            }
         }
 
         function submitEmail(e) {
