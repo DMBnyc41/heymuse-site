@@ -399,12 +399,56 @@
         <div class="hero-badge">🛍️ Muse Market — Now Open</div>
         <h1>Unleash Your Creative Genius</h1>
         <p>If you can imagine it, you and your Muse can build it.</p>
-        <div style="margin-top: 32px; padding: 24px 32px; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); border-radius: 16px; max-width: 640px; margin-left: auto; margin-right: auto;">
-            <p style="font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.7; margin: 0;">
-                "With our AI partners, humans will unlock their creative potential.<br>Muse provides the framework for real world application."
-            </p>
+        <div id="quote-box" style="margin-top: 32px; padding: 24px 32px; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); border-radius: 16px; max-width: 640px; margin-left: auto; margin-right: auto; min-height: 100px; display:flex; align-items:center; justify-content:center;">
+            <p id="quote-text" style="font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.7; margin: 0; transition: opacity 1s ease;"></p>
         </div>
     </div>
+
+    <script>
+    const quotes = [
+        "With our AI partners, humans will unlock their creative potential. Muse provides the framework for real world application.",
+        "Augmentation, not replacement. Your Muse makes you more of who you already are.",
+        "You don't need to know how it works. You just need to know what you want.",
+        "The most powerful tool in the world is useless if it's too hard to use. Muse changes that.",
+        "Every great creator deserves a great partner. That's what Muse is.",
+        "Your Muse never sleeps, never forgets, and never stops working for you.",
+        "AI isn't the future. It's the present. Muse is how you get there.",
+        "Inspiration, move me brightly. — Grateful Dead",
+        "The barrier between idea and reality is smaller than you think.",
+        "You bring the vision. Your Muse brings the execution.",
+        "Small business, big intelligence. That's the Muse promise.",
+        "The world's best assistant isn't human. It's yours.",
+        "You already have everything you need. Muse helps you use it.",
+        "We don't replace people. We make people remarkable.",
+        "Your Muse learns you. Not just your tasks — you.",
+        "The future belongs to people who have great AI partners.",
+        "Creativity is human. Everything else, your Muse can handle.",
+        "Stop doing the work that distracts you from the work that matters.",
+        "What could you build if you never had to do busywork again?",
+        "Muse: where human imagination meets machine capability.",
+        "Every Muse is different — just like every person is different.",
+        "Built by humans. Powered by AI. Owned by you.",
+        "Your data. Your agent. Your Muse. No one else's.",
+        "The best technology feels like magic. Muse feels like magic."
+    ];
+
+    let current = 0;
+    const el = document.getElementById('quote-text');
+
+    function showQuote(index) {
+        el.style.opacity = 0;
+        setTimeout(() => {
+            el.textContent = '"' + quotes[index] + '"';
+            el.style.opacity = 1;
+        }, 1000);
+    }
+
+    showQuote(current);
+    setInterval(() => {
+        current = (current + 1) % quotes.length;
+        showQuote(current);
+    }, 19000);
+    </script>
 
     <!-- SEARCH -->
     <div class="search-bar" style="max-width:600px; margin: 0 auto 40px;">
