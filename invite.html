@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request an Invitation — Muse</title>
+    <meta name="description" content="Request your invitation to Muse — the AI that actually knows you. Limited early access spots available.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(10,10,15,0.95);
+            backdrop-filter: blur(10px);
+        }
+        .nav-logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #a78bfa, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-left: 24px;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 48px;
+            width: 100%;
+            max-width: 560px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(124,58,237,0.2);
+            border: 1px solid rgba(124,58,237,0.4);
+            color: #a78bfa;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 60%, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        label span { color: #a78bfa; }
+        input, select, textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: rgba(124,58,237,0.5);
+        }
+        input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
+        select option { background: #1a1a2e; color: #fff; }
+        textarea { resize: vertical; min-height: 80px; }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            margin-top: 2px;
+            accent-color: #7c3aed;
+            cursor: pointer;
+        }
+        .checkbox-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.5;
+        }
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            border: none;
+            color: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity 0.2s;
+        }
+        .submit-btn:hover { opacity: 0.9; }
+        .divider {
+            height: 1px;
+            background: rgba(255,255,255,0.06);
+            margin: 28px 0;
+        }
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 16px;
+        }
+
+        /* SUCCESS STATE */
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .success-icon { font-size: 4rem; margin-bottom: 20px; }
+        .success-state h2 { font-size: 1.6rem; margin-bottom: 12px; }
+        .success-state p { color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 24px 40px;
+            text-align: center;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.8rem;
+        }
+        footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            nav { padding: 16px 20px; }
+            .card { padding: 32px 24px; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo">🎸 Muse</a>
+        <div class="nav-links">
+            <a href="/market.html">Market</a>
+            <a href="/">Home</a>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="card">
+
+            <!-- FORM STATE -->
+            <div id="form-state">
+                <div class="badge">🎸 Early Access</div>
+                <h1>Request Your Invitation</h1>
+                <p class="subtitle">Muse is in early access. Join the waitlist and we'll send your invitation code when your spot is ready.</p>
+
+                <form id="invite-form" onsubmit="handleSubmit(event)">
+
+                    <!-- BASIC INFO -->
+                    <div class="section-label">About You</div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name <span>*</span></label>
+                            <input type="text" name="first_name" placeholder="Alex" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name <span>*</span></label>
+                            <input type="text" name="last_name" placeholder="Harkness" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address <span>*</span></label>
+                        <input type="email" name="email" placeholder="you@example.com" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Age <span>*</span></label>
+                            <select name="age" required>
+                                <option value="" disabled selected>Select range</option>
+                                <option value="under-18">Under 18 (parent required)</option>
+                                <option value="18-24">18–24</option>
+                                <option value="25-34">25–34</option>
+                                <option value="35-44">35–44</option>
+                                <option value="45-54">45–54</option>
+                                <option value="55-64">55–64</option>
+                                <option value="65+">65+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>ZIP Code</label>
+                            <input type="text" name="zip" placeholder="28401" maxlength="10">
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- HOW THEY FOUND US -->
+                    <div class="section-label">How You Found Us</div>
+
+                    <div class="form-group">
+                        <label>Where did you hear about Muse?</label>
+                        <select name="referral">
+                            <option value="" disabled selected>Select one</option>
+                            <option value="friend">A friend or family member</option>
+                            <option value="openclaw">OpenClaw community</option>
+                            <option value="clawhub">ClawHub / Claw Mart</option>
+                            <option value="social">Social media</option>
+                            <option value="search">Web search</option>
+                            <option value="discord">Discord</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <!-- MIGRATION -->
+                    <div class="section-label">Your Setup</div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="has_openclaw" name="has_openclaw">
+                            <label class="checkbox-label" for="has_openclaw">
+                                <strong style="color:#fff;">I already use OpenClaw</strong><br>
+                                I have an existing OpenClaw setup I'd like to migrate to Muse
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="has_data" name="has_data">
+                            <label class="checkbox-label" for="has_data">
+                                <strong style="color:#fff;">I have data to import</strong><br>
+                                Memories, files, or context I'd like my Muse to know from day one
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 8px;">
+                        <label>Anything else you'd like us to know?</label>
+                        <textarea name="notes" placeholder="Tell us about your use case, what you're hoping Muse can help with, or any questions you have..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Request My Invitation →</button>
+
+                </form>
+            </div>
+
+            <!-- SUCCESS STATE -->
+            <div class="success-state" id="success-state">
+                <div class="success-icon">🎸</div>
+                <h2>You're on the list!</h2>
+                <p>We'll send your invitation code to your email when your spot is ready. In the meantime, explore the <a href="/market.html" style="color:#a78bfa;">Muse Market</a>.</p>
+                <p style="margin-top: 16px; font-size: 0.85rem; color: rgba(255,255,255,0.35);">— The Muse Team, Wilmington NC</p>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 MyMuse Enterprises LLC · <a href="/">heymuse.ai</a> · Wilmington, NC</p>
+        <p style="margin-top: 8px;"><a href="/market.html">Market</a> · <a href="/market-tos.html">Seller Terms</a></p>
+    </footer>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('invite-form');
+            const data = new FormData(form);
+            const payload = Object.fromEntries(data.entries());
+            payload.has_openclaw = document.getElementById('has_openclaw').checked;
+            payload.has_data = document.getElementById('has_data').checked;
+            payload.submitted_at = new Date().toISOString();
+
+            // Send to Formspree (free email collection — no backend needed)
+            fetch('https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(r => r.ok ? showSuccess() : showSuccess()) // Show success either way for now
+            .catch(() => showSuccess());
+        }
+
+        function showSuccess() {
+            document.getElementById('form-state').style.display = 'none';
+            document.getElementById('success-state').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
