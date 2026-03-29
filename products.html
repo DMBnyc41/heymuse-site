@@ -1,1 +1,89 @@
-<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0;url=/invite.html"></head><body></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products — Muse</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0f; color: #fff; font-family: 'Inter', sans-serif; min-height: 100vh; line-height: 1.7; }
+        nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(10,10,15,0.95); }
+        .nav-logo { font-size: 1.4rem; font-weight: 600; background: linear-gradient(135deg, #a78bfa, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; margin-left: 24px; }
+        .hero { text-align: center; padding: 80px 20px 60px; max-width: 700px; margin: 0 auto; }
+        .badge { display: inline-block; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.4); color: #a78bfa; padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 20px; }
+        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; background: linear-gradient(135deg, #fff 60%, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: rgba(255,255,255,0.6); font-size: 1rem; }
+        .products { max-width: 1100px; margin: 0 auto; padding: 0 40px 80px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+        .product-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px; }
+        .product-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .product-card h2 { font-size: 1.2rem; margin-bottom: 10px; }
+        .product-card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 20px; }
+        .product-tag { display: inline-block; background: rgba(124,58,237,0.2); color: #a78bfa; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; margin-bottom: 16px; }
+        .product-link { color: #60a5fa; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 24px 40px; text-align: center; color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+        footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+        @media (max-width: 600px) { nav { padding: 16px 20px; } .products { padding: 0 20px 60px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-logo">🎸 Muse</a>
+        <div class="nav-links"><a href="/market.html">Market</a><a href="/invite.html">Get Access</a></div>
+    </nav>
+    <div class="hero">
+        <div class="badge">🎸 Our Products</div>
+        <h1>Everything Muse Offers</h1>
+        <p class="subtitle">One platform. Infinite possibilities. Your AI partner grows with you.</p>
+    </div>
+    <div class="products">
+        <div class="product-card">
+            <div class="product-icon">🤖</div>
+            <div class="product-tag">Core Product</div>
+            <h2>Your Personal Muse</h2>
+            <p>A named AI assistant with persistent memory, real personality, and deep integration into your life and work. Not a chatbot — a genuine partner.</p>
+            <a href="/invite.html" class="product-link">Request Access →</a>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🛍️</div>
+            <div class="product-tag">Marketplace</div>
+            <h2>Muse Market</h2>
+            <p>Buy and sell AI personas, skills, books, videos, and digital content created by users and their Muse partners. The creator economy for AI.</p>
+            <a href="/market.html" class="product-link">Visit Market →</a>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">💼</div>
+            <div class="product-tag">For Business</div>
+            <h2>Muse for Small Business</h2>
+            <p>A full AI staff for your business — customer chat, market research, marketing, accounting, and IT support. Starting with your first client agent.</p>
+            <a href="/invite.html" class="product-link">Get Started →</a>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">📞</div>
+            <div class="product-tag">Coming Soon</div>
+            <h2>Muse Phone</h2>
+            <p>Your AI answers the phone, qualifies leads, books appointments, and transcribes voicemails — 24/7. Never miss a call again. Dial 240-240-MUSE.</p>
+            <a href="/invite.html" class="product-link">Join Waitlist →</a>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🧒</div>
+            <div class="product-tag">Coming Soon</div>
+            <h2>Muse Kids</h2>
+            <p>A safe, age-appropriate Muse experience for children — with parental controls, a curated Kids Store, and full family oversight built in from day one.</p>
+            <a href="/invite.html" class="product-link">Join Waitlist →</a>
+        </div>
+        <div class="product-card">
+            <div class="product-icon">🤝</div>
+            <div class="product-tag">Coming Soon</div>
+            <h2>Muse CRM</h2>
+            <p>An AI-powered CRM that your Muse manages for you. Track clients, deals, follow-ups, and relationships — all in one place, all memory-powered.</p>
+            <a href="/invite.html" class="product-link">Join Waitlist →</a>
+        </div>
+    </div>
+    <footer>
+        <p>© 2026 MyMuse Enterprises LLC · <a href="/">heymuse.ai</a></p>
+        <p style="margin-top:8px;"><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/contact.html">Contact</a></p>
+    </footer>
+</body>
+</html>
