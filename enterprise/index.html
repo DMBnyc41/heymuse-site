@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muse for Enterprise — Your Team, Amplified</title>
+  <meta name="description" content="Muse gives every employee their own AI — built around how they actually work. Private, secure, and customized for your business." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a1628;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #ffffff;
+    }
+
+    .logo span {
+      color: #4f9cf9;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      margin-left: 32px;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #fff; }
+
+    .hero {
+      text-align: center;
+      padding: 100px 24px 60px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(79, 156, 249, 0.15);
+      color: #4f9cf9;
+      border: 1px solid rgba(79, 156, 249, 0.3);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: #4f9cf9;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: #4f9cf9;
+      font-style: italic;
+      margin-bottom: 44px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #4f9cf9;
+      color: #0a1628;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: #6aadff; transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.25);
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.1s;
+    }
+
+    .btn-secondary:hover { border-color: #fff; transform: translateY(-1px); }
+
+    .features {
+      max-width: 960px;
+      margin: 80px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 14px;
+      padding: 28px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      background: rgba(79,156,249,0.08);
+      transform: translateY(-2px);
+    }
+
+    .card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    .personal-section {
+      max-width: 800px;
+      margin: 0 auto 80px;
+      padding: 48px;
+      background: rgba(79, 156, 249, 0.06);
+      border: 1px solid rgba(79, 156, 249, 0.2);
+      border-radius: 18px;
+      text-align: center;
+    }
+
+    .personal-section h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .personal-section p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.35);
+      font-size: 0.85rem;
+    }
+
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">M<span>USE</span></div>
+    <nav>
+      <a href="https://heymuse.ai">Home</a>
+      <a href="mailto:alexander@heymuse.ai">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="badge">Muse for Enterprise</div>
+    <h1>Your team,<br /><em>amplified.</em></h1>
+    <p class="subtitle">Muse gives every employee their own AI — built around how they actually work. Private, secure, and customized for your business.</p>
+    <p class="tagline">Built for business. Perfect for everyone you know.</p>
+    <div class="cta-group">
+      <a href="mailto:alexander@heymuse.ai?subject=Enterprise Demo Request" class="btn-primary">Book a Demo</a>
+      <a href="https://heymuse.ai" class="btn-secondary">Learn More</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="card">
+      <div class="icon">🧠</div>
+      <h3>Personalized for Every Role</h3>
+      <p>Each team member gets an AI that learns their workflow, not a generic chatbot everyone shares.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔒</div>
+      <h3>Private &amp; Secure</h3>
+      <p>Your data stays yours. Full privacy controls, on your terms — no training on your content.</p>
+    </div>
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Up and Running in Minutes</h3>
+      <p>No lengthy IT projects. Muse deploys fast and your team is productive from day one.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔄</div>
+      <h3>Ever-Evolving</h3>
+      <p>Always on the cutting edge of the latest AI — so your team never falls behind.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <h3>Rock-Solid Stability</h3>
+      <p>Only fully proven updates ship to you. We let others test the bleeding edge — you get what works.</p>
+    </div>
+    <div class="card">
+      <div class="icon">💾</div>
+      <h3>Continuously Backed Up</h3>
+      <p>Your data is always protected with continuous backup and recovery built in from day one.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🖥️</div>
+      <h3>Your Infrastructure, Your Choice</h3>
+      <p>Deploy on your existing servers, new custom hardware, any cloud platform, or a hybrid approach — optimized for your cost and efficiency.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h3>Prebuilt Agents + Skills Menu</h3>
+      <p>Choose from a library of prebuilt agents and add skills as your needs grow. No coding required.</p>
+    </div>
+  </section>
+
+  <section class="personal-section">
+    <h2>And it's not just for work.</h2>
+    <p>The same Muse that powers your enterprise can be there for your team's families — helping an elderly parent navigate technology, supporting a student with homework, or simply being a daily companion. One platform. Infinite use cases.</p>
+    <a href="https://heymuse.ai" class="btn-secondary">Explore Muse for Everyone →</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 MyMuse Enterprises LLC &nbsp;·&nbsp; <a href="https://heymuse.ai">heymuse.ai</a> &nbsp;·&nbsp; <a href="mailto:alexander@heymuse.ai">alexander@heymuse.ai</a></p>
+    <p style="margin-top: 8px; font-style: italic; color: rgba(255,255,255,0.2);">"Inspiration, move me brightly"</p>
+  </footer>
+
+</body>
+</html>
