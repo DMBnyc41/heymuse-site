@@ -16,13 +16,12 @@
             min-height: 100vh;
         }
 
-        /* LOGIN SCREEN */
+        /* ── LOGIN ── */
         #login-screen {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            background: #0a0a0f;
         }
 
         .login-box {
@@ -35,268 +34,144 @@
             text-align: center;
         }
 
-        .login-logo {
-            font-size: 2.2rem;
-            font-weight: 200;
-            letter-spacing: 0.3em;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .login-tagline {
-            font-size: 0.75rem;
-            color: #555;
-            letter-spacing: 0.15em;
-            margin-bottom: 36px;
-        }
+        .login-logo { font-size: 2.2rem; font-weight: 200; letter-spacing: 0.3em; margin-bottom: 6px; }
+        .login-tagline { font-size: 0.72rem; color: #444; letter-spacing: 0.15em; margin-bottom: 36px; }
 
         .login-box input {
-            width: 100%;
-            background: #0a0a0f;
-            border: 1px solid #2a2a3f;
-            border-radius: 8px;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            padding: 12px 16px;
-            margin-bottom: 12px;
-            outline: none;
-            transition: border-color 0.2s;
+            width: 100%; background: #0a0a0f; border: 1px solid #2a2a3f;
+            border-radius: 8px; color: #fff; font-family: 'Inter', sans-serif;
+            font-size: 0.9rem; padding: 12px 16px; margin-bottom: 12px;
+            outline: none; transition: border-color 0.2s;
         }
-
-        .login-box input:focus {
-            border-color: #6c6cff;
-        }
+        .login-box input:focus { border-color: #6c6cff; }
 
         .login-btn {
-            width: 100%;
-            background: #6c6cff;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 13px;
-            cursor: pointer;
-            margin-top: 4px;
-            transition: background 0.2s;
-            letter-spacing: 0.05em;
+            width: 100%; background: #6c6cff; border: none; border-radius: 8px;
+            color: #fff; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+            font-weight: 600; padding: 13px; cursor: pointer; margin-top: 4px;
+            transition: background 0.2s; letter-spacing: 0.05em;
         }
-
         .login-btn:hover { background: #5a5aee; }
+        .login-error { color: #ff6c6c; font-size: 0.8rem; margin-top: 12px; display: none; }
 
-        .login-error {
-            color: #ff6c6c;
-            font-size: 0.8rem;
-            margin-top: 12px;
-            display: none;
-        }
-
-        /* DASHBOARD */
-        #dashboard-screen {
-            display: none;
-            min-height: 100vh;
-        }
+        /* ── DASHBOARD ── */
+        #dashboard-screen { display: none; min-height: 100vh; }
 
         .topbar {
-            background: #12121f;
-            border-bottom: 1px solid #2a2a3f;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background: #12121f; border-bottom: 1px solid #2a2a3f;
+            padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
         }
-
-        .topbar-logo {
-            font-size: 1.2rem;
-            font-weight: 200;
-            letter-spacing: 0.3em;
-        }
-
-        .topbar-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .topbar-user {
-            font-size: 0.8rem;
-            color: #888;
-        }
+        .topbar-logo { font-size: 1.1rem; font-weight: 200; letter-spacing: 0.3em; }
+        .topbar-right { display: flex; align-items: center; gap: 14px; }
+        .topbar-user { font-size: 0.78rem; color: #666; }
 
         .logout-btn {
-            background: none;
-            border: 1px solid #2a2a3f;
-            border-radius: 6px;
-            color: #888;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            padding: 6px 12px;
-            cursor: pointer;
-            transition: all 0.2s;
+            background: none; border: 1px solid #2a2a3f; border-radius: 6px;
+            color: #666; font-family: 'Inter', sans-serif; font-size: 0.72rem;
+            padding: 5px 11px; cursor: pointer; transition: all 0.2s;
         }
+        .logout-btn:hover { border-color: #ff6c6c; color: #ff6c6c; }
 
-        .logout-btn:hover {
-            border-color: #ff6c6c;
-            color: #ff6c6c;
-        }
+        .main { padding: 28px 24px; max-width: 900px; margin: 0 auto; }
 
-        .dashboard-content {
-            padding: 32px 24px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-
-        .dashboard-title {
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            margin-bottom: 8px;
-        }
-
-        .dashboard-sub {
-            font-size: 0.8rem;
-            color: #555;
-            margin-bottom: 32px;
-        }
-
-        /* TAB NAVIGATION */
-        .tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
+        /* ── TABS ── */
+        .tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
         .tab-btn {
-            background: #12121f;
-            border: 1px solid #2a2a3f;
-            border-radius: 8px;
-            color: #888;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            padding: 8px 18px;
-            cursor: pointer;
-            transition: all 0.2s;
-            letter-spacing: 0.05em;
+            background: #12121f; border: 1px solid #2a2a3f; border-radius: 8px;
+            color: #777; font-family: 'Inter', sans-serif; font-size: 0.8rem;
+            padding: 8px 18px; cursor: pointer; transition: all 0.2s;
+        }
+        .tab-btn:hover { border-color: #6c6cff; color: #fff; }
+        .tab-btn.active { background: #6c6cff; border-color: #6c6cff; color: #fff; }
+
+        /* ── PANELS ── */
+        .todo-panel { display: none; }
+        .todo-panel.active { display: block; }
+
+        /* ── SECTIONS ── */
+        .section {
+            background: #12121f; border: 1px solid #2a2a3f;
+            border-radius: 12px; margin-bottom: 14px; overflow: hidden;
         }
 
-        .tab-btn:hover {
-            border-color: #6c6cff;
-            color: #fff;
+        .section-header {
+            padding: 14px 20px; font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.12em; color: #999; text-transform: uppercase;
+            background: #0d0d18; border-bottom: 1px solid #2a2a3f;
+            cursor: pointer; display: flex; justify-content: space-between;
+            align-items: center; user-select: none; transition: color 0.2s;
+        }
+        .section-header:hover { color: #fff; }
+
+        .section-header-left { display: flex; align-items: center; gap: 10px; }
+
+        .chevron { font-size: 0.65rem; transition: transform 0.2s; color: #444; }
+        .section.collapsed .chevron { transform: rotate(-90deg); }
+        .section.collapsed .section-body { display: none; }
+
+        .section-body { padding: 8px 0; }
+
+        /* ── ITEMS ── */
+        .item {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 9px 20px; transition: background 0.15s; cursor: pointer;
+        }
+        .item:hover { background: #0d0d18; }
+
+        .item input[type="checkbox"] {
+            width: 15px; height: 15px; margin-top: 3px;
+            accent-color: #6c6cff; cursor: pointer; flex-shrink: 0;
         }
 
-        .tab-btn.active {
-            background: #6c6cff;
-            border-color: #6c6cff;
-            color: #fff;
-        }
+        .item label { font-size: 0.86rem; color: #ccc; cursor: pointer; line-height: 1.55; }
+        .item.done label { text-decoration: line-through; color: #3a3a4a; }
 
-        /* TODO PANEL */
-        .todo-panel {
-            display: none;
-        }
+        .sub { padding-left: 24px; border-left: 2px solid #1e1e30; margin: 2px 20px 6px 47px; border-radius: 0 0 0 4px; }
+        .sub .item { padding: 7px 0; }
+        .sub .item label { font-size: 0.8rem; color: #777; }
+        .sub .item.done label { color: #2a2a3a; }
 
-        .todo-panel.active {
-            display: block;
-        }
-
-        .todo-section {
-            background: #12121f;
-            border: 1px solid #2a2a3f;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            overflow: hidden;
-        }
-
-        .todo-section-header {
-            padding: 16px 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: #aaa;
-            text-transform: uppercase;
-            background: #0f0f1a;
-            border-bottom: 1px solid #2a2a3f;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-        }
-
-        .todo-section-header:hover { color: #fff; }
-
-        .chevron {
-            font-size: 0.7rem;
-            transition: transform 0.2s;
-        }
-
-        .todo-section.collapsed .chevron { transform: rotate(-90deg); }
-        .todo-section.collapsed .todo-items { display: none; }
-
-        .todo-items {
-            padding: 12px 0;
-        }
-
-        .todo-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 10px 20px;
-            transition: background 0.15s;
-        }
-
-        .todo-item:hover { background: #0f0f1a; }
-
-        .todo-item input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            margin-top: 2px;
-            accent-color: #6c6cff;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .todo-item label {
-            font-size: 0.88rem;
-            color: #ccc;
-            cursor: pointer;
-            line-height: 1.5;
-        }
-
-        .todo-item.done label {
-            text-decoration: line-through;
-            color: #444;
-        }
-
-        .sub-items {
-            margin-left: 28px;
-        }
-
-        .sub-items .todo-item label {
-            font-size: 0.82rem;
-            color: #888;
-        }
-
+        /* ── BADGES ── */
         .badge {
-            display: inline-block;
-            background: #1e1e2f;
-            border: 1px solid #3a3a5f;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            padding: 2px 7px;
-            color: #6c6cff;
-            letter-spacing: 0.05em;
-            margin-left: 8px;
-            vertical-align: middle;
+            display: inline-block; border-radius: 4px; font-size: 0.62rem;
+            padding: 2px 7px; letter-spacing: 0.05em; margin-left: 7px;
+            vertical-align: middle; font-weight: 600;
+        }
+        .badge-red    { background: #2a0a0a; border: 1px solid #5a1a1a; color: #ff6c6c; }
+        .badge-yellow { background: #1e1800; border: 1px solid #4a3a00; color: #ffcc44; }
+        .badge-green  { background: #0a1e0a; border: 1px solid #1a4a1a; color: #44cc88; }
+        .badge-purple { background: #12101f; border: 1px solid #3a2a5a; color: #aa88ff; }
+        .badge-blue   { background: #0a1020; border: 1px solid #1a2a5a; color: #6c9cff; }
+
+        /* ── ALERT BANNER ── */
+        .alert {
+            background: #1a0a0a; border: 1px solid #5a1a1a; border-radius: 10px;
+            padding: 14px 18px; margin-bottom: 14px; font-size: 0.82rem;
+            color: #ff9999; line-height: 1.6;
+        }
+        .alert strong { color: #ff6c6c; }
+
+        /* ── PROGRESS BAR ── */
+        .progress-row {
+            padding: 4px 20px 12px; display: flex; align-items: center; gap: 12px;
+        }
+        .progress-bar {
+            flex: 1; height: 3px; background: #1e1e30; border-radius: 2px; overflow: hidden;
+        }
+        .progress-fill { height: 100%; background: #6c6cff; border-radius: 2px; transition: width 0.4s; }
+        .progress-label { font-size: 0.7rem; color: #444; white-space: nowrap; }
+
+        /* ── DIVIDER ── */
+        .section-divider {
+            font-size: 0.68rem; color: #333; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 4px 20px 2px;
         }
     </style>
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
+<!-- ─── LOGIN ─────────────────────────────────────── -->
 <div id="login-screen">
     <div class="login-box">
         <div class="login-logo">MUSE</div>
@@ -308,8 +183,9 @@
     </div>
 </div>
 
-<!-- DASHBOARD SCREEN -->
+<!-- ─── DASHBOARD ──────────────────────────────────── -->
 <div id="dashboard-screen">
+
     <div class="topbar">
         <div class="topbar-logo">MUSE</div>
         <div class="topbar-right">
@@ -318,143 +194,221 @@
         </div>
     </div>
 
-    <div class="dashboard-content">
-        <div class="dashboard-title">Master Dashboard</div>
-        <div class="dashboard-sub">All active TODO lists — Al Harkness</div>
+    <div class="main">
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('muse', this)">🎸 Muse</button>
-            <button class="tab-btn" onclick="showTab('ita', this)">💼 ITA</button>
-            <button class="tab-btn" onclick="showTab('liz', this)">🏠 Home / Liz</button>
-            <button class="tab-btn" onclick="showTab('tony', this)">🤖 Tony / Sky</button>
+            <button class="tab-btn active" onclick="showTab('muse',this)">🎸 Muse</button>
+            <button class="tab-btn" onclick="showTab('ita',this)">💼 ITA</button>
+            <button class="tab-btn" onclick="showTab('liz',this)">🏠 Home</button>
+            <button class="tab-btn" onclick="showTab('tony',this)">🤖 Tony / Sky</button>
         </div>
 
-        <!-- MUSE TODO -->
+        <!-- ════════════════════════════════
+             MUSE TAB
+        ════════════════════════════════ -->
         <div class="todo-panel active" id="panel-muse">
 
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Product <span class="chevron">▾</span>
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🚀 Product</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item"><input type="checkbox" id="m1"><label for="m1">LLM Router skill — simple → Gemma 4, complex → Claude/Gemini</label></div>
-                    <div class="todo-item"><input type="checkbox" id="m2"><label for="m2">Muse-1 — fine-tune Gemma 4 on Muse data <span class="badge">THE MOAT</span></label></div>
-                    <div class="todo-item"><input type="checkbox" id="m3"><label for="m3">Real-estate-video skill (Veo 3 + property data → listing video)</label></div>
-                    <div class="todo-item"><input type="checkbox" id="m4"><label for="m4">Muse Health skill bundle — spec</label></div>
-                    <div class="todo-item"><input type="checkbox" id="m5"><label for="m5">Muse built-in CRM — spec + first build</label></div>
-                    <div class="todo-item"><input type="checkbox" id="m6"><label for="m6">Muse Console — design and spec</label></div>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="mp1"><label for="mp1">LLM Router skill — simple tasks → Gemma 4, complex → Claude/Gemini</label></div>
+                    <div class="item"><input type="checkbox" id="mp2"><label for="mp2">Muse-1 — fine-tune Gemma 4 on Muse conversation data <span class="badge badge-purple">THE MOAT</span></label></div>
+                    <div class="item"><input type="checkbox" id="mp3"><label for="mp3">Real-estate-video skill — Veo 3 + property data → listing video (Celeste)</label></div>
+                    <div class="item"><input type="checkbox" id="mp4"><label for="mp4">Muse Health skill bundle — spec (dietician, meds, doctor tracker)</label></div>
+                    <div class="item"><input type="checkbox" id="mp5"><label for="mp5">Muse built-in CRM — spec + first build</label></div>
+                    <div class="item"><input type="checkbox" id="mp6"><label for="mp6">Muse Console — design and spec</label></div>
+                    <div class="item"><input type="checkbox" id="mp7"><label for="mp7">Circle Back — AI collaborative word processor (Claw Skill concept)</label></div>
+                    <div class="item"><input type="checkbox" id="mp8"><label for="mp8">Muse Burn-In — Linux MVP (CPU/RAM/Disk/GPU stress test + cert)</label></div>
+                    <div class="item"><input type="checkbox" id="mp9"><label for="mp9">BASE_MUSE template — clean starter package for new Muses (no personal data)</label></div>
                 </div>
             </div>
 
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Infrastructure <span class="chevron">▾</span>
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">⚙️ Infrastructure</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item"><input type="checkbox" id="i1"><label for="i1">DupreeA51 Prep + Gemma 4 Benchmark</label></div>
-                    <div class="sub-items">
-                        <div class="todo-item"><input type="checkbox" id="i1a"><label for="i1a">Create dedicated Gemini API key for A51</label></div>
-                        <div class="todo-item"><input type="checkbox" id="i1b"><label for="i1b">Update Anthropic + Gemini keys via openclaw configure</label></div>
-                        <div class="todo-item"><input type="checkbox" id="i1c"><label for="i1c">Upgrade OpenClaw to latest stable</label></div>
-                        <div class="todo-item"><input type="checkbox" id="i1d"><label for="i1d">Run 10 benchmark questions — Gemma 4 vs Claude</label></div>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="mi1"><label for="mi1">DupreeA51 Prep + Gemma 4 Benchmark</label></div>
+                    <div class="sub">
+                        <div class="item"><input type="checkbox" id="mi1a"><label for="mi1a">Create dedicated Gemini API key for A51</label></div>
+                        <div class="item"><input type="checkbox" id="mi1b"><label for="mi1b">Update Anthropic + Gemini keys via openclaw configure</label></div>
+                        <div class="item"><input type="checkbox" id="mi1c"><label for="mi1c">Upgrade OpenClaw to latest stable (2026.4.26 — NOT 4.27)</label></div>
+                        <div class="item"><input type="checkbox" id="mi1d"><label for="mi1d">Run 10 benchmark questions — Gemma 4 vs Claude, log results</label></div>
                     </div>
-                    <div class="todo-item"><input type="checkbox" id="i2"><label for="i2">Muse Financial Tracking — audit GCP, Gemini, Anthropic costs</label></div>
-                    <div class="todo-item"><input type="checkbox" id="i3"><label for="i3">Review identity + command structure of Muse 7</label></div>
-                    <div class="todo-item"><input type="checkbox" id="i4"><label for="i4">Test and enable Gemini 3.1 Pro API access</label></div>
+                    <div class="item"><input type="checkbox" id="mi2"><label for="mi2">Upgrade Dupree + Samson to 2026.4.26 (sandbox first)</label></div>
+                    <div class="item"><input type="checkbox" id="mi3"><label for="mi3">Muse Financial Tracking — audit GCP, Gemini, Anthropic costs line by line</label></div>
+                    <div class="item"><input type="checkbox" id="mi4"><label for="mi4">Review identity + command structure of Muse 7</label></div>
+                    <div class="item"><input type="checkbox" id="mi5"><label for="mi5">Test and enable Gemini 3.1 Pro API access</label></div>
+                    <div class="item"><input type="checkbox" id="mi6"><label for="mi6">Celeste's AWS server — deploy OpenClaw + Muse agent (IP: 13.58.65.104)</label></div>
+                    <div class="item"><input type="checkbox" id="mi7"><label for="mi7">Daily Security Monitor agent — auto CVE/exploit alerts for our stack</label></div>
+                    <div class="item"><input type="checkbox" id="mi8"><label for="mi8">CVE-2026-31431 "CopyFail" — patch all servers when Ubuntu infra is back <span class="badge badge-red">PAUSED</span></label></div>
                 </div>
             </div>
 
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Business <span class="chevron">▾</span>
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">💰 Business</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item"><input type="checkbox" id="b1"><label for="b1">Draft + send email to Anthropic sales — discounted tokens for Muse LLC</label></div>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="mb1"><label for="mb1">Draft + send email to Anthropic sales — discounted tokens for Muse LLC <span class="badge badge-yellow">DRAFT EXISTS</span></label></div>
+                    <div class="item"><input type="checkbox" id="mb2"><label for="mb2">240-240-MUSE HTTPS fix — Twilio Functions setup (~30 min)</label></div>
+                    <div class="item"><input type="checkbox" id="mb3"><label for="mb3">Stripe products + checkout flow — test end-to-end</label></div>
+                    <div class="item"><input type="checkbox" id="mb4"><label for="mb4">Voice-first onboarding on heymuse.ai (speaker test → Muse says your name)</label></div>
+                    <div class="item"><input type="checkbox" id="mb5"><label for="mb5">Free signup flow — cell verification + SMS OTP</label></div>
+                    <div class="item"><input type="checkbox" id="mb6"><label for="mb6">MuseLetter v1 — build + first send to waitlist</label></div>
+                    <div class="item"><input type="checkbox" id="mb7"><label for="mb7">Compute reseller idea — test GCP server availability in multiple regions</label></div>
                 </div>
             </div>
 
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Website <span class="chevron">▾</span>
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🌐 Website</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item"><input type="checkbox" id="w1" checked><label for="w1">Design + implement Muse login wall ✅</label></div>
-                    <div class="todo-item"><input type="checkbox" id="w2"><label for="w2">Publish master TODO dashboard behind login (Muse / ITA / Liz sub-views)</label></div>
+                <div class="section-body">
+                    <div class="item done"><input type="checkbox" id="mw1" checked><label for="mw1">Muse login wall — built + deployed <span class="badge badge-green">DONE</span></label></div>
+                    <div class="item done"><input type="checkbox" id="mw2" checked><label for="mw2">Master TODO dashboard behind login <span class="badge badge-green">DONE</span></label></div>
+                    <div class="item"><input type="checkbox" id="mw3"><label for="mw3">Patent spec responses — 13 sections remaining</label></div>
+                    <div class="item"><input type="checkbox" id="mw4"><label for="mw4">casey-jones-soul GitHub repo — make PRIVATE <span class="badge badge-red">STILL PUBLIC</span></label></div>
                 </div>
             </div>
+
         </div>
 
-        <!-- ITA TODO -->
+        <!-- ════════════════════════════════
+             ITA TAB
+        ════════════════════════════════ -->
         <div class="todo-panel" id="panel-ita">
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Immediate <span class="chevron">▾</span>
+
+            <div class="alert">
+                <strong>⚠️ Demo failure on April 30.</strong> Skynet was silent — Custodian bug in OC 2026.4.27 silently dropped the API key. Tony's reaction: "No way we could sell this to a client." Trust damaged. Recovery required.
+            </div>
+
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🔴 Immediate</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item"><input type="checkbox" id="it1"><label for="it1">Enter time and expenses for last few days + today</label></div>
-                    <div class="todo-item"><input type="checkbox" id="it2"><label for="it2">Draft + send email to Anthropic sales — discounted token rate (ITA account)</label></div>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="ii1"><label for="ii1">Enter time + expenses for last few days and today</label></div>
+                    <div class="item"><input type="checkbox" id="ii2"><label for="ii2">Draft + send email to Anthropic sales — discounted token rate (ITA account)</label></div>
+                    <div class="item"><input type="checkbox" id="ii3"><label for="ii3">Fix Skynet — manually write auth-profiles.json on Tony's server (bypass Custodian)</label></div>
+                    <div class="item"><input type="checkbox" id="ii4"><label for="ii4">Test: Skynet responds in Telegram ← only success metric that matters</label></div>
+                    <div class="item"><input type="checkbox" id="ii5"><label for="ii5">Reserve static IP on GCP (Tony's account — ephemeral IP will break on reboot)</label></div>
+                    <div class="item"><input type="checkbox" id="ii6"><label for="ii6">Frank to draft service agreement with ITA — IP protection + rate + scope <span class="badge badge-red">BLOCKING</span></label></div>
                 </div>
             </div>
 
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Automation + Agents <span class="chevron">▾</span>
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🤖 Automation + Agents</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item"><input type="checkbox" id="it3"><label for="it3">Auto time + expense tracking subroutine</label></div>
-                    <div class="todo-item"><input type="checkbox" id="it4"><label for="it4">ConnectWise integration</label></div>
-                    <div class="sub-items">
-                        <div class="todo-item"><input type="checkbox" id="it4a"><label for="it4a">Create sandbox ticketing system</label></div>
-                        <div class="todo-item"><input type="checkbox" id="it4b"><label for="it4b">Design + deploy dedicated CW agent: Hal</label></div>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="ia1"><label for="ia1">Auto time + expense tracking subroutine</label></div>
+                    <div class="item"><input type="checkbox" id="ia2"><label for="ia2">ConnectWise integration</label></div>
+                    <div class="sub">
+                        <div class="item"><input type="checkbox" id="ia2a"><label for="ia2a">Create sandbox ticketing system</label></div>
+                        <div class="item"><input type="checkbox" id="ia2b"><label for="ia2b">Design + deploy dedicated CW agent: Hal</label></div>
                     </div>
-                    <div class="todo-item"><input type="checkbox" id="it5"><label for="it5">Design ITA KBai (knowledge base AI)</label></div>
-                    <div class="todo-item"><input type="checkbox" id="it6"><label for="it6">Work on voice-in / voice-out</label></div>
-                    <div class="todo-item"><input type="checkbox" id="it7"><label for="it7">Review, test, implement latest OpenClaw abilities</label></div>
-                    <div class="todo-item"><input type="checkbox" id="it8"><label for="it8">Create living capabilities list — shows which skills each agent has enabled</label></div>
-                    <div class="todo-item"><input type="checkbox" id="it9"><label for="it9">ITA Agent Rules file — onboarding rules all ITA agents self-apply</label></div>
+                    <div class="item"><input type="checkbox" id="ia3"><label for="ia3">Design ITA KBai — knowledge base AI</label></div>
+                    <div class="item"><input type="checkbox" id="ia4"><label for="ia4">Voice-in / voice-out — research + implement</label></div>
+                    <div class="item"><input type="checkbox" id="ia5"><label for="ia5">Review, test, implement latest OpenClaw abilities</label></div>
+                    <div class="item"><input type="checkbox" id="ia6"><label for="ia6">Living capabilities list — shows which skills each agent has currently enabled</label></div>
+                    <div class="item"><input type="checkbox" id="ia7"><label for="ia7">ITA Agent Rules onboarding file — all ITA agents self-apply on first boot</label></div>
+                    <div class="item"><input type="checkbox" id="ia8"><label for="ia8">Muse Burn-In MVP — deliver spec + starter scripts to Tony</label></div>
+                    <div class="item"><input type="checkbox" id="ia9"><label for="ia9">License / copy protection — hook OpenClaw agent spawn, log copies publicly</label></div>
                 </div>
             </div>
+
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">📋 Proposals</div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="ip1"><label for="ip1">1 Claw per staff member — recommended usage doc</label></div>
+                    <div class="item"><input type="checkbox" id="ip2"><label for="ip2">Pricing per seat/per agent — structure + present to Tony</label></div>
+                    <div class="item"><input type="checkbox" id="ip3"><label for="ip3">Renegotiate rate — $35/hr is below market, Al paying tokens out of pocket</label></div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- LIZ TODO -->
+        <!-- ════════════════════════════════
+             HOME / LIZ TAB
+        ════════════════════════════════ -->
         <div class="todo-panel" id="panel-liz">
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Home / Personal <span class="chevron">▾</span>
+
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🏠 Home</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item" style="color:#555; font-size:0.85rem; padding:16px 20px;">
-                        <label style="color:#555;">No items yet — add them here.</label>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="lh1"><label for="lh1">AT&T bill — pay</label></div>
+                    <div class="item"><input type="checkbox" id="lh2"><label for="lh2">Spectrum bill — pay</label></div>
+                    <div class="item"><input type="checkbox" id="lh3"><label for="lh3">GCP bill — check balance (was overdue)</label></div>
+                    <div class="item"><input type="checkbox" id="lh4"><label for="lh4">Critical Amazon order — place it</label></div>
+                    <div class="item"><input type="checkbox" id="lh5"><label for="lh5">eBay — list junk items for sale</label></div>
+                    <div class="item"><input type="checkbox" id="lh6"><label for="lh6">Dig out old Lenovo — test for local OpenClaw</label></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🐾 Pets</div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item" style="padding: 12px 20px;">
+                        <label style="color: #555; font-size: 0.83rem;">Lana 🐱 · Flo & Eddie 🐕 · Lucy 🦜 — add tasks here</label>
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- TONY / SKY TODO -->
+        <!-- ════════════════════════════════
+             TONY / SKY TAB
+        ════════════════════════════════ -->
         <div class="todo-panel" id="panel-tony">
-            <div class="todo-section">
-                <div class="todo-section-header" onclick="toggleSection(this)">
-                    Skyler Setup <span class="chevron">▾</span>
+
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🔧 Skyler / Server Setup</div>
+                    <span class="chevron">▾</span>
                 </div>
-                <div class="todo-items">
-                    <div class="todo-item"><input type="checkbox" id="ts1"><label for="ts1">Gemini API keys — configure on Tony's server</label></div>
-                    <div class="todo-item"><input type="checkbox" id="ts2"><label for="ts2">GitHub connection + test</label></div>
-                    <div class="todo-item"><input type="checkbox" id="ts3"><label for="ts3">SSH access fix — add Dupree's public key to instance metadata</label></div>
-                    <div class="todo-item"><input type="checkbox" id="ts4"><label for="ts4">Review Skyler's HEARTBEAT.md / morning briefing setup</label></div>
+                <div class="section-body">
+                    <div class="item"><input type="checkbox" id="ts1"><label for="ts1">SSH access — add Dupree's public key to GCP instance metadata</label></div>
+                    <div class="item"><input type="checkbox" id="ts2"><label for="ts2">Gemini API key — configure on Tony's server</label></div>
+                    <div class="item"><input type="checkbox" id="ts3"><label for="ts3">GitHub connection + test (ITA org: InsightTechAdvisors)</label></div>
+                    <div class="item"><input type="checkbox" id="ts4"><label for="ts4">Downgrade OC to 2026.4.26 (skip 4.27 — Custodian bug)</label></div>
+                    <div class="item"><input type="checkbox" id="ts5"><label for="ts5">Manually write auth-profiles.json (bypass Custodian wizard)</label></div>
+                    <div class="item"><input type="checkbox" id="ts6"><label for="ts6">Test: Skynet responds in Tony's Telegram</label></div>
+                    <div class="item"><input type="checkbox" id="ts7"><label for="ts7">Reserve static IP on GCP (Tony's account)</label></div>
+                    <div class="item"><input type="checkbox" id="ts8"><label for="ts8">Review Skyler's HEARTBEAT.md — set up morning briefing</label></div>
+                    <div class="item"><input type="checkbox" id="ts9"><label for="ts9">Brave Search API key — add to Skynet config</label></div>
                 </div>
             </div>
+
         </div>
 
-    </div>
-</div>
+    </div><!-- /main -->
+</div><!-- /dashboard -->
 
 <script>
-    // ── ACCOUNTS ──────────────────────────────────────────────
+    // ── ACCOUNTS ─────────────────────────────
     const ACCOUNTS = [
         { email: 'alexander@heymuse.ai', password: '@l3xDUPR33', name: 'Al' }
     ];
 
-    // ── AUTH ──────────────────────────────────────────────────
+    // ── AUTH ──────────────────────────────────
     function doLogin() {
         const email = document.getElementById('login-email').value.trim().toLowerCase();
         const pw = document.getElementById('login-pw').value;
@@ -477,24 +431,10 @@
     function showDashboard(user) {
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('dashboard-screen').style.display = 'block';
-        document.getElementById('topbar-user').textContent = user.name;
+        document.getElementById('topbar-user').textContent = user.name + ' @muse';
     }
 
-    // Auto-login if session exists
-    window.onload = function() {
-        const saved = sessionStorage.getItem('muse_user');
-        if (saved) showDashboard(JSON.parse(saved));
-
-        // Enter key on login
-        document.getElementById('login-pw').addEventListener('keydown', e => {
-            if (e.key === 'Enter') doLogin();
-        });
-        document.getElementById('login-email').addEventListener('keydown', e => {
-            if (e.key === 'Enter') document.getElementById('login-pw').focus();
-        });
-    };
-
-    // ── TABS ──────────────────────────────────────────────────
+    // ── TABS ──────────────────────────────────
     function showTab(name, btn) {
         document.querySelectorAll('.todo-panel').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -502,27 +442,46 @@
         btn.classList.add('active');
     }
 
-    // ── COLLAPSIBLE SECTIONS ──────────────────────────────────
+    // ── SECTIONS ─────────────────────────────
     function toggleSection(header) {
-        header.parentElement.classList.toggle('collapsed');
+        header.closest('.section').classList.toggle('collapsed');
     }
 
-    // ── CHECKBOX STATE (localStorage) ────────────────────────
+    // ── CHECKBOX PERSISTENCE ─────────────────
     document.addEventListener('change', function(e) {
         if (e.target.type === 'checkbox') {
-            localStorage.setItem('cb_' + e.target.id, e.target.checked);
-            e.target.closest('.todo-item').classList.toggle('done', e.target.checked);
+            const id = e.target.id;
+            const checked = e.target.checked;
+            localStorage.setItem('cb_' + id, checked);
+            const item = e.target.closest('.item');
+            if (item) item.classList.toggle('done', checked);
         }
     });
 
-    // Restore checkbox states
-    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        const saved = localStorage.getItem('cb_' + cb.id);
-        if (saved === 'true') {
-            cb.checked = true;
-            cb.closest('.todo-item').classList.add('done');
-        }
-    });
+    // ── INIT ──────────────────────────────────
+    window.onload = function() {
+        // Restore session
+        const saved = sessionStorage.getItem('muse_user');
+        if (saved) showDashboard(JSON.parse(saved));
+
+        // Restore checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            const val = localStorage.getItem('cb_' + cb.id);
+            if (val === 'true') {
+                cb.checked = true;
+                const item = cb.closest('.item');
+                if (item) item.classList.add('done');
+            }
+        });
+
+        // Enter key
+        document.getElementById('login-pw').addEventListener('keydown', e => {
+            if (e.key === 'Enter') doLogin();
+        });
+        document.getElementById('login-email').addEventListener('keydown', e => {
+            if (e.key === 'Enter') document.getElementById('login-pw').focus();
+        });
+    };
 </script>
 
 </body>
