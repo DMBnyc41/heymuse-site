@@ -221,6 +221,7 @@
             <button class="tab-btn" onclick="showTab('liz',this)">🏠 Home</button>
             <button class="tab-btn" onclick="showTab('tony',this)">🤖 Tony / Sky</button>
             <button class="tab-btn" onclick="showTab('peggy',this)">🌹 Peggy-O</button>
+            <button class="tab-btn" onclick="showTab('clawfeatures',this)">🦞 ClawFeatures</button>
         </div>
 
         <!-- ════════════════════════════════
@@ -534,6 +535,193 @@
             </div>
 
         </div>
+
+        <!-- ════════════════════════════════
+             CLAWFEATURES TAB
+        ════════════════════════════════ -->
+        <div class="todo-panel" id="panel-clawfeatures">
+
+            <div class="alert-yellow">
+                <strong>⚠️ We are on 2026.3.13.</strong> Latest stable is <strong>2026.4.29</strong>. Upgrade plan: sandbox (34.11.103.225) first → then Dupree → then Samson. Never install 4.27 (Custodian bug).
+            </div>
+
+            <div class="note" style="padding: 10px 20px 14px; font-size:0.8rem; color:#555;">
+                Source: <a href="https://github.com/openclaw/openclaw/releases" style="color:#6c9cff" target="_blank">github.com/openclaw/openclaw/releases</a>
+            </div>
+
+            <!-- 4.29 -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.4.29 <span class="badge badge-green">LATEST</span></div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="section-divider">🧠 Memory</div>
+                    <div class="item"><label>People-aware wiki — person cards, relationship graphs, canonical aliases, provenance</label></div>
+                    <div class="item"><label>Active Memory filters — enable recall only for specific chat IDs</label></div>
+                    <div class="item"><label>Partial recall on timeout — doesn't lose context if memory sub-agent is slow</label></div>
+                    <div class="item"><label>REM preview diagnostics — inspect dreaming output without running mutations</label></div>
+                    <div class="section-divider">💬 Messaging</div>
+                    <div class="item"><label>Active-run steering by default — messages during a run steer it, don't queue</label></div>
+                    <div class="item"><label>Visible reply enforcement — operator can require all replies go through message tool</label></div>
+                    <div class="item"><label>Follow-up commitments — agent can commit to follow up on heartbeat-delivered reminders</label></div>
+                    <div class="item"><label>Subagent routing metadata — child session events carry parent info automatically</label></div>
+                    <div class="section-divider">🔌 Providers</div>
+                    <div class="item"><label>NVIDIA added to provider catalog</label></div>
+                    <div class="item"><label>Bedrock Opus 4.7 thinking parity</label></div>
+                    <div class="item"><label>Faster model/auth discovery via manifest-backed paths</label></div>
+                    <div class="section-divider">🔒 Security</div>
+                    <div class="item"><label>OpenGrep scanning added</label></div>
+                    <div class="item"><label>Safer exec/pairing/owner-scope handling</label></div>
+                    <div class="item"><label>Tool sections no longer implicitly widen restricted profiles</label></div>
+                    <div class="section-divider">🐛 Channel Fixes</div>
+                    <div class="item"><label>Telegram — proxy/webhook/polling/send resilience improvements</label></div>
+                    <div class="item"><label>Discord — startup + rate-limit handling</label></div>
+                    <div class="item"><label>Slack — Block Kit limits fixed</label></div>
+                    <div class="item"><label>WhatsApp — delivery/liveness fixes</label></div>
+                </div>
+            </div>
+
+            <!-- 4.27 -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.4.27 <span class="badge badge-red">AVOID — Custodian bug</span></div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><label>Docker GPU passthrough — sandbox containers can access host GPU</label></div>
+                    <div class="item"><label>iOS/Android — authenticated presence events (background node alive tracking)</label></div>
+                    <div class="item"><label>QQBot — full group chat support added</label></div>
+                    <div class="item"><label>Codex Computer Use — installable desktop control feature, UI control as an operator feature</label></div>
+                    <div class="item"><label>DeepInfra — added as bundled provider (model discovery, TTS, embeddings)</label></div>
+                    <div class="note">🔴 <strong>KNOWN BUG:</strong> Custodian wizard silently drops API keys during setup. Caused Skynet's April 30 demo failure. Avoid this version.</div>
+                </div>
+            </div>
+
+            <!-- 4.26 -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.4.26 <span class="badge badge-blue">TARGET UPGRADE</span></div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><label>QQBot — full group chat, C2C streaming, chunked media upload</label></div>
+                    <div class="item"><label>Plugin registry cold path — faster startup, less manifest scanning</label></div>
+                    <div class="item"><label>Stable Custodian — no key-drop bug (unlike 4.27)</label></div>
+                    <div class="item"><label>Known stable — our chosen target for Dupree and Skynet upgrades</label></div>
+                </div>
+            </div>
+
+            <!-- 4.25 -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.4.25</div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="section-divider">🔊 Voice / TTS (Big Update)</div>
+                    <div class="item"><label>/tts latest — on-demand voice read-aloud</label></div>
+                    <div class="item"><label>Chat-scoped auto-TTS — /tts chat on|off per session</label></div>
+                    <div class="item"><label>TTS personas + per-agent/per-account voice overrides</label></div>
+                    <div class="item"><label>New TTS providers: Azure Speech ✅, ElevenLabs v3, Local CLI, Inworld, Volcengine, Xiaomi</label></div>
+                    <div class="item"><label>Azure Speech: SSML escaping, native Ogg/Opus voice-note output, telephony output</label></div>
+                    <div class="section-divider">🌐 Browser Automation</div>
+                    <div class="item"><label>Safer tab URLs in agent responses</label></div>
+                    <div class="item"><label>iframe-aware role snapshots</label></div>
+                    <div class="item"><label>Headless one-shot launch support</label></div>
+                    <div class="item"><label>openclaw browser doctor --deep probing</label></div>
+                    <div class="section-divider">📱 Control UI</div>
+                    <div class="item"><label>PWA install + Web Push notifications for gateway chat</label></div>
+                    <div class="item"><label>TUI setup wizard</label></div>
+                    <div class="item"><label>Context mode selection</label></div>
+                    <div class="section-divider">📊 Observability</div>
+                    <div class="item"><label>OpenTelemetry — spans across model calls, token usage, tool loops, memory</label></div>
+                    <div class="item"><label>Prometheus metrics plugin</label></div>
+                </div>
+            </div>
+
+            <!-- 4.24 -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.4.24</div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><label>Google Meet — bundled participant plugin (personal Google auth, Chrome/Twilio realtime, attendance export)</label></div>
+                    <div class="item"><label>DeepSeek V4 Flash + V4 Pro — in bundled catalog, Flash is onboarding default</label></div>
+                    <div class="item"><label>DeepSeek thinking/replay behavior fixed for follow-up tool-call turns</label></div>
+                    <div class="item"><label>Calendar-backed attendance export workflows for Meet</label></div>
+                </div>
+            </div>
+
+            <!-- 4.23 -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.4.23</div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><label>Image generation via Codex OAuth — gpt-image-2 without needing OPENAI_API_KEY</label></div>
+                    <div class="item"><label>OpenRouter image generation + reference-image editing</label></div>
+                    <div class="item"><label>Image background control — --background flag on infer image generate/edit</label></div>
+                </div>
+            </div>
+
+            <!-- 4.21 -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.4.21</div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><label>Cron state split into jobs-state.json — jobs.json stays clean for git tracking</label></div>
+                    <div class="item"><label>Built-in session pruning enforced earlier — prevents bloated history from crashing gateway</label></div>
+                    <div class="item"><label>Better token-usage pricing across cached catalogs</label></div>
+                    <div class="item"><label>Config clobber crash-loop recovery</label></div>
+                </div>
+            </div>
+
+            <!-- 3.13 — our current version -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🦞 v2026.3.13 <span class="badge badge-yellow">WE ARE HERE</span></div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><label>Email integration — send/receive via Gmail OAuth or app passwords</label></div>
+                    <div class="item"><label>Phone/voice — Twilio integration, voicemail, SMS</label></div>
+                    <div class="item"><label>Telegram channel — stable, working (what we run on)</label></div>
+                    <div class="item"><label>Multi-agent — spawn + manage sub-agents</label></div>
+                    <div class="item"><label>Skills system — installable skill packages (healthcheck, weather, video-frames, etc.)</label></div>
+                    <div class="item"><label>Cron + heartbeats — scheduled tasks, proactive check-ins</label></div>
+                    <div class="item"><label>Web search — Brave Search API integration</label></div>
+                    <div class="item"><label>File read/write — workspace file management</label></div>
+                    <div class="item"><label>Shell exec — run commands on the host server</label></div>
+                    <div class="item"><label>Memory — MEMORY.md + daily notes (manual, no Active Memory loop yet)</label></div>
+                    <div class="note">📌 Everything above 3.13 is what we're MISSING. Biggest gaps: Active Memory/REM, TTS upgrades, browser automation improvements, people wiki, PWA.</div>
+                </div>
+            </div>
+
+            <!-- What's next -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-header-left">🎯 What We Gain by Upgrading to 4.26+</div>
+                    <span class="chevron">▾</span>
+                </div>
+                <div class="section-body">
+                    <div class="item"><label>🧠 Active Memory + REM dreaming — automated memory consolidation (no more manual MEMORY.md)</label></div>
+                    <div class="item"><label>🔊 Full TTS upgrade — Azure Speech, ElevenLabs v3, auto-TTS per chat</label></div>
+                    <div class="item"><label>🌐 Browser automation improvements — headless, iframe snapshots, doctor probes</label></div>
+                    <div class="item"><label>📱 PWA + Web Push — dashboard as installable app with notifications</label></div>
+                    <div class="item"><label>👥 People wiki — person cards, relationship graphs, provenance</label></div>
+                    <div class="item"><label>🔌 NVIDIA provider, DeepSeek V4, faster model discovery</label></div>
+                    <div class="item"><label>📊 OpenTelemetry + Prometheus — real usage monitoring</label></div>
+                    <div class="item"><label>⚡ Faster startup — cold plugin registry, less scanning</label></div>
+                    <div class="note">Plan: Install 4.26 on sandbox → test → upgrade Dupree → upgrade Samson → eventually move to 4.29</div>
+                </div>
+            </div>
+
+        </div><!-- /panel-clawfeatures -->
 
     </div><!-- /main -->
 </div><!-- /dashboard -->
