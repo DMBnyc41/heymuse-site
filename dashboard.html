@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muse Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* LOGIN SCREEN */
+        #login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #0a0a0f;
+        }
+
+        .login-box {
+            background: #12121f;
+            border: 1px solid #2a2a3f;
+            border-radius: 16px;
+            padding: 48px 40px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+
+        .login-logo {
+            font-size: 2.2rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .login-tagline {
+            font-size: 0.75rem;
+            color: #555;
+            letter-spacing: 0.15em;
+            margin-bottom: 36px;
+        }
+
+        .login-box input {
+            width: 100%;
+            background: #0a0a0f;
+            border: 1px solid #2a2a3f;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .login-box input:focus {
+            border-color: #6c6cff;
+        }
+
+        .login-btn {
+            width: 100%;
+            background: #6c6cff;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 13px;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: background 0.2s;
+            letter-spacing: 0.05em;
+        }
+
+        .login-btn:hover { background: #5a5aee; }
+
+        .login-error {
+            color: #ff6c6c;
+            font-size: 0.8rem;
+            margin-top: 12px;
+            display: none;
+        }
+
+        /* DASHBOARD */
+        #dashboard-screen {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: #12121f;
+            border-bottom: 1px solid #2a2a3f;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .topbar-logo {
+            font-size: 1.2rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .topbar-user {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .logout-btn {
+            background: none;
+            border: 1px solid #2a2a3f;
+            border-radius: 6px;
+            color: #888;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover {
+            border-color: #ff6c6c;
+            color: #ff6c6c;
+        }
+
+        .dashboard-content {
+            padding: 32px 24px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .dashboard-title {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-sub {
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 32px;
+        }
+
+        /* TAB NAVIGATION */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: #12121f;
+            border: 1px solid #2a2a3f;
+            border-radius: 8px;
+            color: #888;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.05em;
+        }
+
+        .tab-btn:hover {
+            border-color: #6c6cff;
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: #6c6cff;
+            border-color: #6c6cff;
+            color: #fff;
+        }
+
+        /* TODO PANEL */
+        .todo-panel {
+            display: none;
+        }
+
+        .todo-panel.active {
+            display: block;
+        }
+
+        .todo-section {
+            background: #12121f;
+            border: 1px solid #2a2a3f;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .todo-section-header {
+            padding: 16px 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #aaa;
+            text-transform: uppercase;
+            background: #0f0f1a;
+            border-bottom: 1px solid #2a2a3f;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .todo-section-header:hover { color: #fff; }
+
+        .chevron {
+            font-size: 0.7rem;
+            transition: transform 0.2s;
+        }
+
+        .todo-section.collapsed .chevron { transform: rotate(-90deg); }
+        .todo-section.collapsed .todo-items { display: none; }
+
+        .todo-items {
+            padding: 12px 0;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 20px;
+            transition: background 0.15s;
+        }
+
+        .todo-item:hover { background: #0f0f1a; }
+
+        .todo-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            accent-color: #6c6cff;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .todo-item label {
+            font-size: 0.88rem;
+            color: #ccc;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .todo-item.done label {
+            text-decoration: line-through;
+            color: #444;
+        }
+
+        .sub-items {
+            margin-left: 28px;
+        }
+
+        .sub-items .todo-item label {
+            font-size: 0.82rem;
+            color: #888;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e1e2f;
+            border: 1px solid #3a3a5f;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            padding: 2px 7px;
+            color: #6c6cff;
+            letter-spacing: 0.05em;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+    <div class="login-box">
+        <div class="login-logo">MUSE</div>
+        <div class="login-tagline">INSPIRATION, MOVE ME BRIGHTLY</div>
+        <input type="email" id="login-email" placeholder="Email" autocomplete="email" />
+        <input type="password" id="login-pw" placeholder="Password" autocomplete="current-password" />
+        <button class="login-btn" onclick="doLogin()">SIGN IN</button>
+        <div class="login-error" id="login-error">Invalid email or password.</div>
+    </div>
+</div>
+
+<!-- DASHBOARD SCREEN -->
+<div id="dashboard-screen">
+    <div class="topbar">
+        <div class="topbar-logo">MUSE</div>
+        <div class="topbar-right">
+            <span class="topbar-user" id="topbar-user"></span>
+            <button class="logout-btn" onclick="doLogout()">Sign Out</button>
+        </div>
+    </div>
+
+    <div class="dashboard-content">
+        <div class="dashboard-title">Master Dashboard</div>
+        <div class="dashboard-sub">All active TODO lists — Al Harkness</div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('muse', this)">🎸 Muse</button>
+            <button class="tab-btn" onclick="showTab('ita', this)">💼 ITA</button>
+            <button class="tab-btn" onclick="showTab('liz', this)">🏠 Home / Liz</button>
+            <button class="tab-btn" onclick="showTab('tony', this)">🤖 Tony / Sky</button>
+        </div>
+
+        <!-- MUSE TODO -->
+        <div class="todo-panel active" id="panel-muse">
+
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Product <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item"><input type="checkbox" id="m1"><label for="m1">LLM Router skill — simple → Gemma 4, complex → Claude/Gemini</label></div>
+                    <div class="todo-item"><input type="checkbox" id="m2"><label for="m2">Muse-1 — fine-tune Gemma 4 on Muse data <span class="badge">THE MOAT</span></label></div>
+                    <div class="todo-item"><input type="checkbox" id="m3"><label for="m3">Real-estate-video skill (Veo 3 + property data → listing video)</label></div>
+                    <div class="todo-item"><input type="checkbox" id="m4"><label for="m4">Muse Health skill bundle — spec</label></div>
+                    <div class="todo-item"><input type="checkbox" id="m5"><label for="m5">Muse built-in CRM — spec + first build</label></div>
+                    <div class="todo-item"><input type="checkbox" id="m6"><label for="m6">Muse Console — design and spec</label></div>
+                </div>
+            </div>
+
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Infrastructure <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item"><input type="checkbox" id="i1"><label for="i1">DupreeA51 Prep + Gemma 4 Benchmark</label></div>
+                    <div class="sub-items">
+                        <div class="todo-item"><input type="checkbox" id="i1a"><label for="i1a">Create dedicated Gemini API key for A51</label></div>
+                        <div class="todo-item"><input type="checkbox" id="i1b"><label for="i1b">Update Anthropic + Gemini keys via openclaw configure</label></div>
+                        <div class="todo-item"><input type="checkbox" id="i1c"><label for="i1c">Upgrade OpenClaw to latest stable</label></div>
+                        <div class="todo-item"><input type="checkbox" id="i1d"><label for="i1d">Run 10 benchmark questions — Gemma 4 vs Claude</label></div>
+                    </div>
+                    <div class="todo-item"><input type="checkbox" id="i2"><label for="i2">Muse Financial Tracking — audit GCP, Gemini, Anthropic costs</label></div>
+                    <div class="todo-item"><input type="checkbox" id="i3"><label for="i3">Review identity + command structure of Muse 7</label></div>
+                    <div class="todo-item"><input type="checkbox" id="i4"><label for="i4">Test and enable Gemini 3.1 Pro API access</label></div>
+                </div>
+            </div>
+
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Business <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item"><input type="checkbox" id="b1"><label for="b1">Draft + send email to Anthropic sales — discounted tokens for Muse LLC</label></div>
+                </div>
+            </div>
+
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Website <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item"><input type="checkbox" id="w1" checked><label for="w1">Design + implement Muse login wall ✅</label></div>
+                    <div class="todo-item"><input type="checkbox" id="w2"><label for="w2">Publish master TODO dashboard behind login (Muse / ITA / Liz sub-views)</label></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITA TODO -->
+        <div class="todo-panel" id="panel-ita">
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Immediate <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item"><input type="checkbox" id="it1"><label for="it1">Enter time and expenses for last few days + today</label></div>
+                    <div class="todo-item"><input type="checkbox" id="it2"><label for="it2">Draft + send email to Anthropic sales — discounted token rate (ITA account)</label></div>
+                </div>
+            </div>
+
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Automation + Agents <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item"><input type="checkbox" id="it3"><label for="it3">Auto time + expense tracking subroutine</label></div>
+                    <div class="todo-item"><input type="checkbox" id="it4"><label for="it4">ConnectWise integration</label></div>
+                    <div class="sub-items">
+                        <div class="todo-item"><input type="checkbox" id="it4a"><label for="it4a">Create sandbox ticketing system</label></div>
+                        <div class="todo-item"><input type="checkbox" id="it4b"><label for="it4b">Design + deploy dedicated CW agent: Hal</label></div>
+                    </div>
+                    <div class="todo-item"><input type="checkbox" id="it5"><label for="it5">Design ITA KBai (knowledge base AI)</label></div>
+                    <div class="todo-item"><input type="checkbox" id="it6"><label for="it6">Work on voice-in / voice-out</label></div>
+                    <div class="todo-item"><input type="checkbox" id="it7"><label for="it7">Review, test, implement latest OpenClaw abilities</label></div>
+                    <div class="todo-item"><input type="checkbox" id="it8"><label for="it8">Create living capabilities list — shows which skills each agent has enabled</label></div>
+                    <div class="todo-item"><input type="checkbox" id="it9"><label for="it9">ITA Agent Rules file — onboarding rules all ITA agents self-apply</label></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LIZ TODO -->
+        <div class="todo-panel" id="panel-liz">
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Home / Personal <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item" style="color:#555; font-size:0.85rem; padding:16px 20px;">
+                        <label style="color:#555;">No items yet — add them here.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TONY / SKY TODO -->
+        <div class="todo-panel" id="panel-tony">
+            <div class="todo-section">
+                <div class="todo-section-header" onclick="toggleSection(this)">
+                    Skyler Setup <span class="chevron">▾</span>
+                </div>
+                <div class="todo-items">
+                    <div class="todo-item"><input type="checkbox" id="ts1"><label for="ts1">Gemini API keys — configure on Tony's server</label></div>
+                    <div class="todo-item"><input type="checkbox" id="ts2"><label for="ts2">GitHub connection + test</label></div>
+                    <div class="todo-item"><input type="checkbox" id="ts3"><label for="ts3">SSH access fix — add Dupree's public key to instance metadata</label></div>
+                    <div class="todo-item"><input type="checkbox" id="ts4"><label for="ts4">Review Skyler's HEARTBEAT.md / morning briefing setup</label></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // ── ACCOUNTS ──────────────────────────────────────────────
+    const ACCOUNTS = [
+        { email: 'alexander@heymuse.ai', password: '@l3xDUPR33', name: 'Al' }
+    ];
+
+    // ── AUTH ──────────────────────────────────────────────────
+    function doLogin() {
+        const email = document.getElementById('login-email').value.trim().toLowerCase();
+        const pw = document.getElementById('login-pw').value;
+        const user = ACCOUNTS.find(a => a.email.toLowerCase() === email && a.password === pw);
+        if (user) {
+            sessionStorage.setItem('muse_user', JSON.stringify(user));
+            showDashboard(user);
+        } else {
+            document.getElementById('login-error').style.display = 'block';
+        }
+    }
+
+    function doLogout() {
+        sessionStorage.removeItem('muse_user');
+        document.getElementById('dashboard-screen').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'flex';
+        document.getElementById('login-pw').value = '';
+    }
+
+    function showDashboard(user) {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('dashboard-screen').style.display = 'block';
+        document.getElementById('topbar-user').textContent = user.name;
+    }
+
+    // Auto-login if session exists
+    window.onload = function() {
+        const saved = sessionStorage.getItem('muse_user');
+        if (saved) showDashboard(JSON.parse(saved));
+
+        // Enter key on login
+        document.getElementById('login-pw').addEventListener('keydown', e => {
+            if (e.key === 'Enter') doLogin();
+        });
+        document.getElementById('login-email').addEventListener('keydown', e => {
+            if (e.key === 'Enter') document.getElementById('login-pw').focus();
+        });
+    };
+
+    // ── TABS ──────────────────────────────────────────────────
+    function showTab(name, btn) {
+        document.querySelectorAll('.todo-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('panel-' + name).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // ── COLLAPSIBLE SECTIONS ──────────────────────────────────
+    function toggleSection(header) {
+        header.parentElement.classList.toggle('collapsed');
+    }
+
+    // ── CHECKBOX STATE (localStorage) ────────────────────────
+    document.addEventListener('change', function(e) {
+        if (e.target.type === 'checkbox') {
+            localStorage.setItem('cb_' + e.target.id, e.target.checked);
+            e.target.closest('.todo-item').classList.toggle('done', e.target.checked);
+        }
+    });
+
+    // Restore checkbox states
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        const saved = localStorage.getItem('cb_' + cb.id);
+        if (saved === 'true') {
+            cb.checked = true;
+            cb.closest('.todo-item').classList.add('done');
+        }
+    });
+</script>
+
+</body>
+</html>
